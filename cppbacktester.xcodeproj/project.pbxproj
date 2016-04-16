@@ -21,10 +21,6 @@
 		90EABE941CBAA0CF00F5316C /* TreasurySeries.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABE881CBAA0CF00F5316C /* TreasurySeries.hpp */; };
 		90EABE9A1CBAA7A500F5316C /* ActionSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABE981CBAA7A500F5316C /* ActionSeries.cpp */; };
 		90EABE9B1CBAA7A500F5316C /* ActionSeries.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABE991CBAA7A500F5316C /* ActionSeries.hpp */; };
-		90EABEB61CBE681900F5316C /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABEB21CBE681900F5316C /* Asset.cpp */; };
-		90EABEB71CBE681900F5316C /* Asset.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABEB31CBE681900F5316C /* Asset.hpp */; };
-		90EABEB81CBE681900F5316C /* DB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABEB41CBE681900F5316C /* DB.cpp */; };
-		90EABEB91CBE681900F5316C /* DB.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABEB51CBE681900F5316C /* DB.hpp */; };
 		90EABEDB1CBE6CE100F5316C /* Execution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABED91CBE6CE100F5316C /* Execution.cpp */; };
 		90EABEDC1CBE6CE100F5316C /* Execution.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABEDA1CBE6CE100F5316C /* Execution.hpp */; };
 		90EABEDF1CBE725300F5316C /* ExecutionSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABEDD1CBE725300F5316C /* ExecutionSet.cpp */; };
@@ -37,10 +33,16 @@
 		90EABEEC1CBFBADE00F5316C /* ShortPosition.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABEEA1CBFBADE00F5316C /* ShortPosition.hpp */; };
 		90EABEEF1CBFBDDE00F5316C /* PositionSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABEED1CBFBDDE00F5316C /* PositionSet.cpp */; };
 		90EABEF01CBFBDDE00F5316C /* PositionSet.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABEEE1CBFBDDE00F5316C /* PositionSet.hpp */; };
-		90EABEF61CC075B400F5316C /* Trader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABEF51CC075B400F5316C /* Trader.cpp */; };
-		90EABEF81CC075BB00F5316C /* Trader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABEF71CC075BB00F5316C /* Trader.hpp */; };
-		90EABEFB1CC0937D00F5316C /* ETFTrader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABEF91CC0937D00F5316C /* ETFTrader.cpp */; };
-		90EABEFC1CC0937D00F5316C /* ETFTrader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABEFA1CC0937D00F5316C /* ETFTrader.hpp */; };
+		90EABF031CC2818300F5316C /* Trader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF011CC2818300F5316C /* Trader.cpp */; };
+		90EABF041CC2818300F5316C /* Trader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF021CC2818300F5316C /* Trader.hpp */; };
+		90EABF071CC281CB00F5316C /* TA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF051CC281CB00F5316C /* TA.cpp */; };
+		90EABF081CC281CB00F5316C /* TA.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF061CC281CB00F5316C /* TA.hpp */; };
+		90EABF1E1CC2823600F5316C /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF181CC2823600F5316C /* Asset.cpp */; };
+		90EABF1F1CC2823600F5316C /* Asset.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF191CC2823600F5316C /* Asset.hpp */; };
+		90EABF201CC2823600F5316C /* DB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF1A1CC2823600F5316C /* DB.cpp */; };
+		90EABF211CC2823600F5316C /* DB.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF1B1CC2823600F5316C /* DB.hpp */; };
+		90EABF221CC2823600F5316C /* ETFTrader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF1C1CC2823600F5316C /* ETFTrader.cpp */; };
+		90EABF231CC2823600F5316C /* ETFTrader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF1D1CC2823600F5316C /* ETFTrader.hpp */; };
 		90FC3E271CB6781B00BCC3AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90FC3E261CB6781B00BCC3AD /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -52,20 +54,6 @@
 			remoteGlobalIDString = 90EABE6F1CBA9FD600F5316C;
 			remoteInfo = data;
 		};
-		90EABEAE1CBE673A00F5316C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 90EABE6F1CBA9FD600F5316C;
-			remoteInfo = data;
-		};
-		90EABEB01CBE67CB00F5316C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 90EABEA21CBE670D00F5316C;
-			remoteInfo = algo;
-		};
 		90EABEC91CBE68B300F5316C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
@@ -73,14 +61,28 @@
 			remoteGlobalIDString = 90EABE6F1CBA9FD600F5316C;
 			remoteInfo = data;
 		};
-		90EABECB1CBE68B800F5316C /* PBXContainerItemProxy */ = {
+		90EABECD1CBE690100F5316C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 90EABEBD1CBE68A100F5316C;
 			remoteInfo = engine;
 		};
-		90EABECD1CBE690100F5316C /* PBXContainerItemProxy */ = {
+		90EABF241CC2824700F5316C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90EABF0C1CC2820200F5316C;
+			remoteInfo = etfalgo;
+		};
+		90EABF261CC2825000F5316C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90EABE6F1CBA9FD600F5316C;
+			remoteInfo = data;
+		};
+		90EABF281CC2825000F5316C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
 			proxyType = 1;
@@ -117,11 +119,6 @@
 		90EABE881CBAA0CF00F5316C /* TreasurySeries.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TreasurySeries.hpp; sourceTree = "<group>"; };
 		90EABE981CBAA7A500F5316C /* ActionSeries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionSeries.cpp; sourceTree = "<group>"; };
 		90EABE991CBAA7A500F5316C /* ActionSeries.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ActionSeries.hpp; sourceTree = "<group>"; };
-		90EABEA31CBE670D00F5316C /* libalgo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libalgo.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		90EABEB21CBE681900F5316C /* Asset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asset.cpp; sourceTree = "<group>"; };
-		90EABEB31CBE681900F5316C /* Asset.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Asset.hpp; sourceTree = "<group>"; };
-		90EABEB41CBE681900F5316C /* DB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DB.cpp; sourceTree = "<group>"; };
-		90EABEB51CBE681900F5316C /* DB.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DB.hpp; sourceTree = "<group>"; };
 		90EABEBE1CBE68A100F5316C /* libengine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libengine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EABED91CBE6CE100F5316C /* Execution.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Execution.cpp; sourceTree = "<group>"; };
 		90EABEDA1CBE6CE100F5316C /* Execution.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Execution.hpp; sourceTree = "<group>"; };
@@ -135,10 +132,17 @@
 		90EABEEA1CBFBADE00F5316C /* ShortPosition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShortPosition.hpp; sourceTree = "<group>"; };
 		90EABEED1CBFBDDE00F5316C /* PositionSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PositionSet.cpp; sourceTree = "<group>"; };
 		90EABEEE1CBFBDDE00F5316C /* PositionSet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PositionSet.hpp; sourceTree = "<group>"; };
-		90EABEF51CC075B400F5316C /* Trader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trader.cpp; sourceTree = "<group>"; };
-		90EABEF71CC075BB00F5316C /* Trader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Trader.hpp; sourceTree = "<group>"; };
-		90EABEF91CC0937D00F5316C /* ETFTrader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ETFTrader.cpp; sourceTree = "<group>"; };
-		90EABEFA1CC0937D00F5316C /* ETFTrader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ETFTrader.hpp; sourceTree = "<group>"; };
+		90EABF011CC2818300F5316C /* Trader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trader.cpp; sourceTree = "<group>"; };
+		90EABF021CC2818300F5316C /* Trader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Trader.hpp; sourceTree = "<group>"; };
+		90EABF051CC281CB00F5316C /* TA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TA.cpp; sourceTree = "<group>"; };
+		90EABF061CC281CB00F5316C /* TA.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TA.hpp; sourceTree = "<group>"; };
+		90EABF0D1CC2820200F5316C /* libetfalgo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libetfalgo.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		90EABF181CC2823600F5316C /* Asset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asset.cpp; sourceTree = "<group>"; };
+		90EABF191CC2823600F5316C /* Asset.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Asset.hpp; sourceTree = "<group>"; };
+		90EABF1A1CC2823600F5316C /* DB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DB.cpp; sourceTree = "<group>"; };
+		90EABF1B1CC2823600F5316C /* DB.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DB.hpp; sourceTree = "<group>"; };
+		90EABF1C1CC2823600F5316C /* ETFTrader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ETFTrader.cpp; sourceTree = "<group>"; };
+		90EABF1D1CC2823600F5316C /* ETFTrader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ETFTrader.hpp; sourceTree = "<group>"; };
 		90FC3E231CB6781B00BCC3AD /* cppbacktester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cppbacktester; sourceTree = BUILT_PRODUCTS_DIR; };
 		90FC3E261CB6781B00BCC3AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,14 +155,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90EABEA01CBE670D00F5316C /* Frameworks */ = {
+		90EABEBB1CBE68A100F5316C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90EABEBB1CBE68A100F5316C /* Frameworks */ = {
+		90EABF0A1CC2820200F5316C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -196,21 +200,6 @@
 			path = data;
 			sourceTree = "<group>";
 		};
-		90EABEA41CBE670D00F5316C /* algo */ = {
-			isa = PBXGroup;
-			children = (
-				90EABEB21CBE681900F5316C /* Asset.cpp */,
-				90EABEB31CBE681900F5316C /* Asset.hpp */,
-				90EABEB41CBE681900F5316C /* DB.cpp */,
-				90EABEB51CBE681900F5316C /* DB.hpp */,
-				90EABEF51CC075B400F5316C /* Trader.cpp */,
-				90EABEF71CC075BB00F5316C /* Trader.hpp */,
-				90EABEF91CC0937D00F5316C /* ETFTrader.cpp */,
-				90EABEFA1CC0937D00F5316C /* ETFTrader.hpp */,
-			);
-			path = algo;
-			sourceTree = "<group>";
-		};
 		90EABEBF1CBE68A100F5316C /* engine */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,15 +215,32 @@
 				90EABEEA1CBFBADE00F5316C /* ShortPosition.hpp */,
 				90EABEED1CBFBDDE00F5316C /* PositionSet.cpp */,
 				90EABEEE1CBFBDDE00F5316C /* PositionSet.hpp */,
+				90EABF011CC2818300F5316C /* Trader.cpp */,
+				90EABF021CC2818300F5316C /* Trader.hpp */,
+				90EABF051CC281CB00F5316C /* TA.cpp */,
+				90EABF061CC281CB00F5316C /* TA.hpp */,
 			);
 			path = engine;
+			sourceTree = "<group>";
+		};
+		90EABF0E1CC2820200F5316C /* etfalgo */ = {
+			isa = PBXGroup;
+			children = (
+				90EABF181CC2823600F5316C /* Asset.cpp */,
+				90EABF191CC2823600F5316C /* Asset.hpp */,
+				90EABF1A1CC2823600F5316C /* DB.cpp */,
+				90EABF1B1CC2823600F5316C /* DB.hpp */,
+				90EABF1C1CC2823600F5316C /* ETFTrader.cpp */,
+				90EABF1D1CC2823600F5316C /* ETFTrader.hpp */,
+			);
+			path = etfalgo;
 			sourceTree = "<group>";
 		};
 		90FC3E1A1CB6781B00BCC3AD = {
 			isa = PBXGroup;
 			children = (
 				90FC3E251CB6781B00BCC3AD /* cppbacktester */,
-				90EABEA41CBE670D00F5316C /* algo */,
+				90EABF0E1CC2820200F5316C /* etfalgo */,
 				90EABE711CBA9FD600F5316C /* data */,
 				90EABEBF1CBE68A100F5316C /* engine */,
 				90FC3E241CB6781B00BCC3AD /* Products */,
@@ -246,8 +252,8 @@
 			children = (
 				90FC3E231CB6781B00BCC3AD /* cppbacktester */,
 				90EABE701CBA9FD600F5316C /* libdata.a */,
-				90EABEA31CBE670D00F5316C /* libalgo.a */,
 				90EABEBE1CBE68A100F5316C /* libengine.a */,
+				90EABF0D1CC2820200F5316C /* libetfalgo.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -277,27 +283,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90EABEA11CBE670D00F5316C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				90EABEFC1CC0937D00F5316C /* ETFTrader.hpp in Headers */,
-				90EABEB91CBE681900F5316C /* DB.hpp in Headers */,
-				90EABEF81CC075BB00F5316C /* Trader.hpp in Headers */,
-				90EABEB71CBE681900F5316C /* Asset.hpp in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		90EABEBC1CBE68A100F5316C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				90EABEE41CBF1C2200F5316C /* Position.hpp in Headers */,
+				90EABF081CC281CB00F5316C /* TA.hpp in Headers */,
+				90EABF041CC2818300F5316C /* Trader.hpp in Headers */,
 				90EABEE01CBE725300F5316C /* ExecutionSet.hpp in Headers */,
 				90EABEF01CBFBDDE00F5316C /* PositionSet.hpp in Headers */,
 				90EABEDC1CBE6CE100F5316C /* Execution.hpp in Headers */,
 				90EABEEC1CBFBADE00F5316C /* ShortPosition.hpp in Headers */,
 				90EABEE81CBF292900F5316C /* LongPosition.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90EABF0B1CC2820200F5316C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90EABF211CC2823600F5316C /* DB.hpp in Headers */,
+				90EABF1F1CC2823600F5316C /* Asset.hpp in Headers */,
+				90EABF231CC2823600F5316C /* ETFTrader.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,25 +328,6 @@
 			productReference = 90EABE701CBA9FD600F5316C /* libdata.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		90EABEA21CBE670D00F5316C /* algo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 90EABEAB1CBE670D00F5316C /* Build configuration list for PBXNativeTarget "algo" */;
-			buildPhases = (
-				90EABE9F1CBE670D00F5316C /* Sources */,
-				90EABEA01CBE670D00F5316C /* Frameworks */,
-				90EABEA11CBE670D00F5316C /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				90EABECC1CBE68B800F5316C /* PBXTargetDependency */,
-				90EABEAF1CBE673A00F5316C /* PBXTargetDependency */,
-			);
-			name = algo;
-			productName = algo;
-			productReference = 90EABEA31CBE670D00F5316C /* libalgo.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		90EABEBD1CBE68A100F5316C /* engine */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90EABEC61CBE68A100F5316C /* Build configuration list for PBXNativeTarget "engine" */;
@@ -358,6 +346,25 @@
 			productReference = 90EABEBE1CBE68A100F5316C /* libengine.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		90EABF0C1CC2820200F5316C /* etfalgo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90EABF151CC2820200F5316C /* Build configuration list for PBXNativeTarget "etfalgo" */;
+			buildPhases = (
+				90EABF091CC2820200F5316C /* Sources */,
+				90EABF0A1CC2820200F5316C /* Frameworks */,
+				90EABF0B1CC2820200F5316C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90EABF271CC2825000F5316C /* PBXTargetDependency */,
+				90EABF291CC2825000F5316C /* PBXTargetDependency */,
+			);
+			name = etfalgo;
+			productName = etfalgo;
+			productReference = 90EABF0D1CC2820200F5316C /* libetfalgo.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		90FC3E221CB6781B00BCC3AD /* cppbacktester */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90FC3E2A1CB6781B00BCC3AD /* Build configuration list for PBXNativeTarget "cppbacktester" */;
@@ -369,8 +376,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				90EABF251CC2824700F5316C /* PBXTargetDependency */,
 				90EABECE1CBE690100F5316C /* PBXTargetDependency */,
-				90EABEB11CBE67CB00F5316C /* PBXTargetDependency */,
 				90EABE7C1CBAA06E00F5316C /* PBXTargetDependency */,
 			);
 			name = cppbacktester;
@@ -390,10 +397,10 @@
 					90EABE6F1CBA9FD600F5316C = {
 						CreatedOnToolsVersion = 7.3;
 					};
-					90EABEA21CBE670D00F5316C = {
+					90EABEBD1CBE68A100F5316C = {
 						CreatedOnToolsVersion = 7.3;
 					};
-					90EABEBD1CBE68A100F5316C = {
+					90EABF0C1CC2820200F5316C = {
 						CreatedOnToolsVersion = 7.3;
 					};
 					90FC3E221CB6781B00BCC3AD = {
@@ -414,9 +421,9 @@
 			projectRoot = "";
 			targets = (
 				90FC3E221CB6781B00BCC3AD /* cppbacktester */,
-				90EABEA21CBE670D00F5316C /* algo */,
 				90EABE6F1CBA9FD600F5316C /* data */,
 				90EABEBD1CBE68A100F5316C /* engine */,
+				90EABF0C1CC2820200F5316C /* etfalgo */,
 			);
 		};
 /* End PBXProject section */
@@ -436,17 +443,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90EABE9F1CBE670D00F5316C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				90EABEF61CC075B400F5316C /* Trader.cpp in Sources */,
-				90EABEB61CBE681900F5316C /* Asset.cpp in Sources */,
-				90EABEB81CBE681900F5316C /* DB.cpp in Sources */,
-				90EABEFB1CC0937D00F5316C /* ETFTrader.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		90EABEBA1CBE68A100F5316C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -455,8 +451,20 @@
 				90EABEDF1CBE725300F5316C /* ExecutionSet.cpp in Sources */,
 				90EABEE71CBF292900F5316C /* LongPosition.cpp in Sources */,
 				90EABEEB1CBFBADE00F5316C /* ShortPosition.cpp in Sources */,
+				90EABF071CC281CB00F5316C /* TA.cpp in Sources */,
+				90EABF031CC2818300F5316C /* Trader.cpp in Sources */,
 				90EABEE31CBF1C2200F5316C /* Position.cpp in Sources */,
 				90EABEEF1CBFBDDE00F5316C /* PositionSet.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90EABF091CC2820200F5316C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90EABF1E1CC2823600F5316C /* Asset.cpp in Sources */,
+				90EABF201CC2823600F5316C /* DB.cpp in Sources */,
+				90EABF221CC2823600F5316C /* ETFTrader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,30 +484,30 @@
 			target = 90EABE6F1CBA9FD600F5316C /* data */;
 			targetProxy = 90EABE7B1CBAA06E00F5316C /* PBXContainerItemProxy */;
 		};
-		90EABEAF1CBE673A00F5316C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 90EABE6F1CBA9FD600F5316C /* data */;
-			targetProxy = 90EABEAE1CBE673A00F5316C /* PBXContainerItemProxy */;
-		};
-		90EABEB11CBE67CB00F5316C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 90EABEA21CBE670D00F5316C /* algo */;
-			targetProxy = 90EABEB01CBE67CB00F5316C /* PBXContainerItemProxy */;
-		};
 		90EABECA1CBE68B300F5316C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 90EABE6F1CBA9FD600F5316C /* data */;
 			targetProxy = 90EABEC91CBE68B300F5316C /* PBXContainerItemProxy */;
 		};
-		90EABECC1CBE68B800F5316C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 90EABEBD1CBE68A100F5316C /* engine */;
-			targetProxy = 90EABECB1CBE68B800F5316C /* PBXContainerItemProxy */;
-		};
 		90EABECE1CBE690100F5316C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 90EABEBD1CBE68A100F5316C /* engine */;
 			targetProxy = 90EABECD1CBE690100F5316C /* PBXContainerItemProxy */;
+		};
+		90EABF251CC2824700F5316C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90EABF0C1CC2820200F5316C /* etfalgo */;
+			targetProxy = 90EABF241CC2824700F5316C /* PBXContainerItemProxy */;
+		};
+		90EABF271CC2825000F5316C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90EABE6F1CBA9FD600F5316C /* data */;
+			targetProxy = 90EABF261CC2825000F5316C /* PBXContainerItemProxy */;
+		};
+		90EABF291CC2825000F5316C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90EABEBD1CBE68A100F5316C /* engine */;
+			targetProxy = 90EABF281CC2825000F5316C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -530,63 +538,15 @@
 			};
 			name = Release;
 		};
-		90EABEAC1CBE670D00F5316C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
-				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include/,
-					./data,
-					./engine,
-				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
-				OTHER_LDFLAGS = (
-					"-lboost_date_time",
-					"-ldata",
-					"-lengine",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		90EABEAD1CBE670D00F5316C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EXECUTABLE_PREFIX = lib;
-				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include/,
-					./data,
-					./engine,
-				);
-				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
-				OTHER_LDFLAGS = (
-					"-lboost_date_time",
-					"-ldata",
-					"-lengine",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		90EABEC71CBE68A100F5316C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include/,
-					./data,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include/;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
-				OTHER_LDFLAGS = (
-					"-lboost_date_time",
-					"-ldata",
-				);
+				OTHER_LDFLAGS = "-lboost_date_time";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -597,15 +557,35 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include/,
-					./data,
-				);
+				HEADER_SEARCH_PATHS = /usr/local/include/;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
-				OTHER_LDFLAGS = (
-					"-lboost_date_time",
-					"-ldata",
-				);
+				OTHER_LDFLAGS = "-lboost_date_time";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		90EABF161CC2820200F5316C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				OTHER_LDFLAGS = "-lboost_date_time";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		90EABF171CC2820200F5316C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				OTHER_LDFLAGS = "-lboost_date_time";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -697,15 +677,18 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
 					./data,
-					./algo,
 					./engine,
+					./etfalgo,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				OTHER_LDFLAGS = (
 					"-lboost_date_time",
+					"-letfalgo",
 					"-ldata",
-					"-lalgo",
 					"-lengine",
+					"-lta_lib",
+					"-lgsl",
+					"-lgslcblas",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -717,15 +700,18 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
 					./data,
-					./algo,
 					./engine,
+					./etfalgo,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				OTHER_LDFLAGS = (
 					"-lboost_date_time",
+					"-letfalgo",
 					"-ldata",
-					"-lalgo",
 					"-lengine",
+					"-lta_lib",
+					"-lgsl",
+					"-lgslcblas",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -743,15 +729,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		90EABEAB1CBE670D00F5316C /* Build configuration list for PBXNativeTarget "algo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				90EABEAC1CBE670D00F5316C /* Debug */,
-				90EABEAD1CBE670D00F5316C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		90EABEC61CBE68A100F5316C /* Build configuration list for PBXNativeTarget "engine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -760,6 +737,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		90EABF151CC2820200F5316C /* Build configuration list for PBXNativeTarget "etfalgo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90EABF161CC2820200F5316C /* Debug */,
+				90EABF171CC2820200F5316C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		90FC3E1E1CB6781B00BCC3AD /* Build configuration list for PBXProject "cppbacktester" */ = {
 			isa = XCConfigurationList;

@@ -6,23 +6,38 @@
 	<dict>
 		<key>algo.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
 		<key>cppbacktester.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 		<key>data.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 		<key>engine.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>etfalgo.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -38,6 +53,11 @@
 			<true/>
 		</dict>
 		<key>90EABEBD1CBE68A100F5316C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>90EABF0C1CC2820200F5316C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

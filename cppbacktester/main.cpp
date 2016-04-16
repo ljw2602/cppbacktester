@@ -36,11 +36,13 @@ void executionset();
 void position();
 void positionset();
 void etftrader();
+void etftrader_offset();
+void etftrader_run();
 
 int main() {
     
-    etftrader();
-    
+    etftrader_run();
+
 //    daily();
 //    weekly();
 //    monthly();
@@ -50,9 +52,75 @@ int main() {
 //    executionset();
 //    position();
 //    positionset();
+//    etftrader();
+//    etftrader_offset();
     
     return 0;
     
+}
+
+void etftrader_run() {
+    FileDriver fd;
+    date load_begin(from_simple_string(string("2005-2-17")));
+    date load_end(from_simple_string(string("2006-5-20")));
+    
+    const string xlu_symbol("XLU");
+    const string xlu_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLU.csv");
+    const string xlu_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLU_actions.csv");
+    
+    const string xlv_symbol("XLV");
+    const string xlv_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLV.csv");
+    const string xlv_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLV_actions.csv");
+    
+    // load function advances the data to EOM
+    DB::instance().load(xlu_symbol, xlu_price, xlu_action, fd, load_begin, load_end);
+    DB::instance().load(xlv_symbol, xlv_price, xlv_action, fd, load_begin, load_end);
+    
+    
+    ETFTrader one("1");
+    one.run();  // this function advances the data
+}
+
+void etftrader_offset() {
+    FileDriver fd;
+    date load_begin(from_simple_string(string("2005-2-17")));
+    date load_end(from_simple_string(string("2006-5-20")));
+    
+    const string xlu_symbol("XLU");
+    const string xlu_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLU.csv");
+    const string xlu_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLU_actions.csv");
+    
+    const string xlv_symbol("XLV");
+    const string xlv_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLV.csv");
+    const string xlv_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLV_actions.csv");
+    
+    // load function advances the data to EOM
+    DB::instance().load(xlu_symbol, xlu_price, xlu_action, fd, load_begin, load_end);
+    DB::instance().load(xlv_symbol, xlv_price, xlv_action, fd, load_begin, load_end);
+    
+    std::vector<std::string> symbols = DB::instance().dblist();
+    for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); it++ ) {
+        cout << *it << endl;
+        
+        PriceSeries ds = DB::instance().get(*it).daily();
+        PriceSeries::const_iterator pDaily = DB::instance().get(*it).pDaily();
+        cout << "Daily Price" << endl;
+        for (; pDaily != DB::instance().get(*it).daily().end(); pDaily++) {
+            cout << pDaily->first << "\t" << pDaily->second->close() << endl;
+        }
+        
+        cout << "Monthly Price" << endl;
+        PriceSeries::const_iterator pMonthly = DB::instance().get(*it).pMonthly();
+        for (; pMonthly != DB::instance().get(*it).monthly().end(); pMonthly++) {
+            cout << pMonthly->first << "\t" << pMonthly->second->close() << endl;
+        }
+        
+        cout << "Action Series" << endl;
+        ActionSeries::const_iterator pAction = DB::instance().get(*it).pAction();
+        for (; pAction != DB::instance().get(*it).action().end(); pAction++) {
+            cout << pAction->first << "\t" << pAction->second->ratio() << endl;
+        }
+    }
 }
 
 void etftrader() {
@@ -144,7 +212,7 @@ void executionset() {
 void database_offset() {
     FileDriver fd;
     date load_begin(from_simple_string(string("2005-2-17")));
-    date load_end(from_simple_string(string("2005-3-28")));
+    date load_end(from_simple_string(string("2006-5-20")));
     
     const string xlu_symbol("XLU");
     const string xlu_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLU.csv");
@@ -156,6 +224,8 @@ void database_offset() {
 
     DB::instance().load(xlu_symbol, xlu_price, xlu_action, fd, load_begin, load_end);
     DB::instance().load(xlv_symbol, xlv_price, xlv_action, fd, load_begin, load_end);
+    
+    DB::instance().advance(1,2);  // advance 1 year and 2 months
     
     std::vector<std::string> symbols = DB::instance().dblist();
     for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); it++ ) {
@@ -180,6 +250,7 @@ void database_offset() {
             cout << pAction->first << "\t" << pAction->second->ratio() << endl;
         }
     }
+    
 }
 
 void database() {

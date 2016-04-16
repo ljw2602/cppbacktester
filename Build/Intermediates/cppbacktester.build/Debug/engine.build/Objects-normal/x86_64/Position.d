@@ -918,4 +918,6 @@ dependencies: \
   /usr/local/include/boost/bind/placeholders.hpp \
   /usr/local/include/boost/multi_index/detail/duplicates_iterator.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
-  data/Series.hpp data/FileDriver.hpp data/DataEntry.hpp
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/Series.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/FileDriver.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DataEntry.hpp

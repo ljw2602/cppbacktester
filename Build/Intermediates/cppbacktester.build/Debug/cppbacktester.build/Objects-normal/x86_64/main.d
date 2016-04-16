@@ -762,8 +762,8 @@ dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/EquitySeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/TreasurySeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/algo/DB.hpp \
-  algo/Asset.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/DB.hpp \
+  etfalgo/Asset.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/ActionSeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Execution.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ExecutionSet.hpp \
@@ -929,5 +929,5 @@ dependencies: \
   engine/Position.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ShortPosition.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/PositionSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/algo/ETFTrader.hpp \
-  algo/Trader.hpp
+  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFTrader.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp
