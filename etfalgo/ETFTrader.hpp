@@ -12,17 +12,19 @@
 #include "Trader.hpp"
 #include "DB.hpp"
 
+
 class ETFTrader: public Trader
 {
 public:
-    ETFTrader(const std::string& initial);
+    ETFTrader(const double initial);
     
     void run() throw(TraderException);
     
 private:
-    const std::string initial_capital;
-//    void preprocess_data(unsigned yr, unsigned mon);
-    
+    const double initial_capital;
+    void daily_execution(std::map<std::string, int>& share_book,
+                         std::map<std::string, int>& order_book,
+                         const boost::gregorian::date& today);
 };
 
 #endif /* ETFTrader_hpp */

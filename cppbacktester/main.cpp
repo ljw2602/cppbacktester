@@ -77,7 +77,7 @@ void etftrader_run() {
     DB::instance().load(xlv_symbol, xlv_price, xlv_action, fd, load_begin, load_end);
     
     
-    ETFTrader one("1");
+    ETFTrader one(1);
     one.run();  // this function advances the data
 }
 
@@ -127,14 +127,14 @@ void etftrader() {
     date begin(from_simple_string(string("2005-2-17")));
     date end(from_simple_string(string("2005-3-11")));
     
-    ETFTrader one("1");
+    ETFTrader one(1);
     unsigned long id = one.buy("XYZ", begin, 34.12, 3);
     one.buy(id, begin, 41.32, 1);
     one.sell(id, begin, 63.18);
     one.close(id, end, 53.12);
     one.print(id);
     
-    ETFTrader two("1");
+    ETFTrader two(1);
     unsigned long id2 = two.sell_short("ABC", begin, 34.12, 3);
     two.sell_short(id2, begin, 41.32, 1);
     two.cover(id2, begin, 63.18);
