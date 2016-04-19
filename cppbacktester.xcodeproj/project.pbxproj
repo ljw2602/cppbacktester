@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90DC04D01CC6512600970BF1 /* Balance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90DC04CE1CC6512600970BF1 /* Balance.cpp */; };
+		90DC04D11CC6512600970BF1 /* Balance.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DC04CF1CC6512600970BF1 /* Balance.hpp */; };
+		90DC04D41CC6515C00970BF1 /* BalanceSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90DC04D21CC6515C00970BF1 /* BalanceSet.cpp */; };
+		90DC04D51CC6515C00970BF1 /* BalanceSet.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DC04D31CC6515C00970BF1 /* BalanceSet.hpp */; };
 		90EABE891CBAA0CF00F5316C /* DataEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABE7D1CBAA0CF00F5316C /* DataEntry.cpp */; };
 		90EABE8A1CBAA0CF00F5316C /* DataEntry.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABE7E1CBAA0CF00F5316C /* DataEntry.hpp */; };
 		90EABE8B1CBAA0CF00F5316C /* EquitySeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABE7F1CBAA0CF00F5316C /* EquitySeries.cpp */; };
@@ -47,6 +51,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		90DC04CA1CC6510E00970BF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90DC04BE1CC6509C00970BF1;
+			remoteInfo = balance;
+		};
+		90DC04CC1CC6511300970BF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90DC04BE1CC6509C00970BF1;
+			remoteInfo = balance;
+		};
 		90EABE7B1CBAA06E00F5316C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
@@ -104,6 +122,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		90DC04BF1CC6509C00970BF1 /* libbalance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libbalance.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		90DC04CE1CC6512600970BF1 /* Balance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Balance.cpp; sourceTree = "<group>"; };
+		90DC04CF1CC6512600970BF1 /* Balance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Balance.hpp; sourceTree = "<group>"; };
+		90DC04D21CC6515C00970BF1 /* BalanceSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BalanceSet.cpp; sourceTree = "<group>"; };
+		90DC04D31CC6515C00970BF1 /* BalanceSet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BalanceSet.hpp; sourceTree = "<group>"; };
 		90EABE701CBA9FD600F5316C /* libdata.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdata.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EABE7D1CBAA0CF00F5316C /* DataEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataEntry.cpp; sourceTree = "<group>"; };
 		90EABE7E1CBAA0CF00F5316C /* DataEntry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataEntry.hpp; sourceTree = "<group>"; };
@@ -148,6 +171,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		90DC04BC1CC6509C00970BF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90EABE6D1CBA9FD600F5316C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -179,6 +209,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90DC04C01CC6509C00970BF1 /* balance */ = {
+			isa = PBXGroup;
+			children = (
+				90DC04CE1CC6512600970BF1 /* Balance.cpp */,
+				90DC04CF1CC6512600970BF1 /* Balance.hpp */,
+				90DC04D21CC6515C00970BF1 /* BalanceSet.cpp */,
+				90DC04D31CC6515C00970BF1 /* BalanceSet.hpp */,
+			);
+			path = balance;
+			sourceTree = "<group>";
+		};
 		90EABE711CBA9FD600F5316C /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +284,7 @@
 				90EABF0E1CC2820200F5316C /* etfalgo */,
 				90EABE711CBA9FD600F5316C /* data */,
 				90EABEBF1CBE68A100F5316C /* engine */,
+				90DC04C01CC6509C00970BF1 /* balance */,
 				90FC3E241CB6781B00BCC3AD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -254,6 +296,7 @@
 				90EABE701CBA9FD600F5316C /* libdata.a */,
 				90EABEBE1CBE68A100F5316C /* libengine.a */,
 				90EABF0D1CC2820200F5316C /* libetfalgo.a */,
+				90DC04BF1CC6509C00970BF1 /* libbalance.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -269,6 +312,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		90DC04BD1CC6509C00970BF1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90DC04D51CC6515C00970BF1 /* BalanceSet.hpp in Headers */,
+				90DC04D11CC6512600970BF1 /* Balance.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90EABE6E1CBA9FD600F5316C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,6 +363,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		90DC04BE1CC6509C00970BF1 /* balance */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90DC04C91CC6509C00970BF1 /* Build configuration list for PBXNativeTarget "balance" */;
+			buildPhases = (
+				90DC04BB1CC6509C00970BF1 /* Sources */,
+				90DC04BC1CC6509C00970BF1 /* Frameworks */,
+				90DC04BD1CC6509C00970BF1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = balance;
+			productName = balance;
+			productReference = 90DC04BF1CC6509C00970BF1 /* libbalance.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		90EABE6F1CBA9FD600F5316C /* data */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90EABE7A1CBA9FD600F5316C /* Build configuration list for PBXNativeTarget "data" */;
@@ -357,6 +426,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				90DC04CB1CC6510E00970BF1 /* PBXTargetDependency */,
 				90EABF271CC2825000F5316C /* PBXTargetDependency */,
 				90EABF291CC2825000F5316C /* PBXTargetDependency */,
 			);
@@ -376,6 +446,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				90DC04CD1CC6511300970BF1 /* PBXTargetDependency */,
 				90EABF251CC2824700F5316C /* PBXTargetDependency */,
 				90EABECE1CBE690100F5316C /* PBXTargetDependency */,
 				90EABE7C1CBAA06E00F5316C /* PBXTargetDependency */,
@@ -394,6 +465,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Jeongwon;
 				TargetAttributes = {
+					90DC04BE1CC6509C00970BF1 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					90EABE6F1CBA9FD600F5316C = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -424,11 +498,21 @@
 				90EABE6F1CBA9FD600F5316C /* data */,
 				90EABEBD1CBE68A100F5316C /* engine */,
 				90EABF0C1CC2820200F5316C /* etfalgo */,
+				90DC04BE1CC6509C00970BF1 /* balance */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		90DC04BB1CC6509C00970BF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90DC04D01CC6512600970BF1 /* Balance.cpp in Sources */,
+				90DC04D41CC6515C00970BF1 /* BalanceSet.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90EABE6C1CBA9FD600F5316C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -479,6 +563,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		90DC04CB1CC6510E00970BF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90DC04BE1CC6509C00970BF1 /* balance */;
+			targetProxy = 90DC04CA1CC6510E00970BF1 /* PBXContainerItemProxy */;
+		};
+		90DC04CD1CC6511300970BF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90DC04BE1CC6509C00970BF1 /* balance */;
+			targetProxy = 90DC04CC1CC6511300970BF1 /* PBXContainerItemProxy */;
+		};
 		90EABE7C1CBAA06E00F5316C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 90EABE6F1CBA9FD600F5316C /* data */;
@@ -512,6 +606,32 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		90DC04C71CC6509C00970BF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				OTHER_LDFLAGS = "-lboost_date_time";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		90DC04C81CC6509C00970BF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				OTHER_LDFLAGS = "-lboost_date_time";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		90EABE781CBA9FD600F5316C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -686,6 +806,7 @@
 					"-letfalgo",
 					"-ldata",
 					"-lengine",
+					"-lbalance",
 					"-lta_lib",
 					"-lgsl",
 					"-lgslcblas",
@@ -709,6 +830,7 @@
 					"-letfalgo",
 					"-ldata",
 					"-lengine",
+					"-lbalance",
 					"-lta_lib",
 					"-lgsl",
 					"-lgslcblas",
@@ -720,6 +842,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		90DC04C91CC6509C00970BF1 /* Build configuration list for PBXNativeTarget "balance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90DC04C71CC6509C00970BF1 /* Debug */,
+				90DC04C81CC6509C00970BF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		90EABE7A1CBA9FD600F5316C /* Build configuration list for PBXNativeTarget "data" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -745,6 +875,7 @@
 				90EABF171CC2820200F5316C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		90FC3E1E1CB6781B00BCC3AD /* Build configuration list for PBXProject "cppbacktester" */ = {
 			isa = XCConfigurationList;

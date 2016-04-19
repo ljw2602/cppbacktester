@@ -22,6 +22,7 @@
 #include "ShortPosition.hpp"
 #include "PositionSet.hpp"
 #include "ETFTrader.hpp"
+#include "BalanceSet.hpp"
 
 using namespace boost::gregorian;
 using namespace std;
@@ -41,8 +42,13 @@ void etftrader_run();
 
 int main() {
     
-    etftrader_run();
-
+    date today(from_simple_string(string("2005-2-17")));
+    vector<string> names;
+    names.push_back("ABC"); names.push_back("XYZ"); names.push_back("OPQ");
+    
+    BalanceSet::instance().initialize(today, 1000, names);
+    BalanceSet::instance().print();
+    
 //    daily();
 //    weekly();
 //    monthly();
@@ -54,6 +60,7 @@ int main() {
 //    positionset();
 //    etftrader();
 //    etftrader_offset();
+//    etftrader_run();
     
     return 0;
     

@@ -930,4 +930,6 @@ dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ShortPosition.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/PositionSet.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFTrader.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp

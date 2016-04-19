@@ -207,7 +207,8 @@ void ETFTrader::daily_execution(std::map<std::string, int>& share_book,
 }
 
 
-void daily_settlement()
+void daily_settlement(const std::map<std::string, int>& share_book,
+                      const boost::gregorian::date& today)
 {
     // EOD balance check
     // EOD split & dividend recognition
@@ -245,6 +246,7 @@ void ETFTrader::run() throw(TraderException)
         daily_execution(share_book, order_book, today);
         
         if ( today == *pMon && today != *(dt_day.rbegin()) ) {  // every EOM except the last day
+            
             // Estimation (e.g. YoY return)
             std::map<double, std::string, std::greater<double> > est = monthly_estimation();
             
@@ -255,7 +257,7 @@ void ETFTrader::run() throw(TraderException)
             pMon++; DB::instance().monthly_advance();
         }
         
-        daily_settlement();
+        daily_settlement(share_book, today);
         
         // Advance daily pointers
         DB::instance().daily_advance();
