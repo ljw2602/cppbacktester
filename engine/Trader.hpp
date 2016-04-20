@@ -43,18 +43,18 @@ public:
     Trader(void);
     virtual ~Trader(void) { }
     
-    // Buy and sell
-    Position::ID buy(const std::string& symbol, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
-    void buy(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
-    void sell(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
+    // Buy and sell (return net cash change)
+    double buy(const std::string& symbol, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
+    double buy(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
+    double sell(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
     
-    // Short and cover
-    Position::ID sell_short(const std::string& symbol, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
-    void sell_short(Position::ID, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
-    void cover(Position::ID, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
+    // Short and cover (return net cash change)
+    double sell_short(const std::string& symbol, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
+    double sell_short(Position::ID, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
+    double cover(Position::ID, const boost::gregorian::date& dt, const double price, unsigned size = 1) throw(TraderException);
     
-    // Close position
-    void close(Position::ID id, const boost::gregorian::date& dt, const double price) throw(TraderException);
+    // Close position (return net cash change)
+    double close(Position::ID id, const boost::gregorian::date& dt, const double price) throw(TraderException);
     
     virtual void run() = 0;
     void print(Position::ID id);

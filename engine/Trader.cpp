@@ -16,7 +16,7 @@ Trader::Trader(void)
 
 
 // Buy a new position
-Position::ID Trader::buy(const std::string& symbol, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
+double Trader::buy(const std::string& symbol, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
 {
     // Create new position
     PositionPtr pPos;
@@ -32,13 +32,13 @@ Position::ID Trader::buy(const std::string& symbol, const boost::gregorian::date
     if( _Positions.insert(pPos).first == _Positions.end() )
         throw TraderException("Can't add new long position");
     
-    // Return new position ID
-    return _pid;
+    // Return decrease in cash from the purchase
+    return -price*size;
 }
 
 
 // Add buy execution to an existing position
-void Trader::buy(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
+double Trader::buy(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
 {
     // Find existing position
     PositionSet::const_iterator iter = _Positions.find(id, pos_comp_id());
@@ -52,11 +52,14 @@ void Trader::buy(Position::ID id, const boost::gregorian::date& dt, const double
     } catch( const std::exception& ex ) {
         throw TraderException(ex.what());
     }
+    
+    // Return decrease in cash from the purchase
+    return -price*size;
 }
 
 
 // Sell an existing long position
-void Trader::sell(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
+double Trader::sell(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
 {
     // Find existing position
     PositionSet::const_iterator iter = _Positions.find(id, pos_comp_id());
@@ -70,10 +73,13 @@ void Trader::sell(Position::ID id, const boost::gregorian::date& dt, const doubl
     } catch( const std::exception& ex ) {
         throw TraderException(ex.what());
     }
+    
+    // Return increase in cash from the sell
+    return price*size;
 }
 
 
-Position::ID Trader::sell_short(const std::string& symbol, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
+double Trader::sell_short(const std::string& symbol, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
 {
     PositionPtr pPos;
     
@@ -86,11 +92,12 @@ Position::ID Trader::sell_short(const std::string& symbol, const boost::gregoria
     if( _Positions.insert(pPos).first == _Positions.end() )
         throw TraderException("Can't add short position");
     
-    return _pid;
+    // Return increase in cash from the sell
+    return price*size;
 }
 
 
-void Trader::sell_short(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
+double Trader::sell_short(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
 {
     // Find existing position
     PositionSet::const_iterator iter = _Positions.find(id, pos_comp_id());
@@ -104,10 +111,13 @@ void Trader::sell_short(Position::ID id, const boost::gregorian::date& dt, const
     } catch( const std::exception& ex ) {
         throw TraderException(ex.what());
     }
+    
+    // Return increase in cash from the sell
+    return price*size;
 }
 
 
-void Trader::cover(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
+double Trader::cover(Position::ID id, const boost::gregorian::date& dt, const double price, unsigned size) throw(TraderException)
 {
     // Find existing position
     PositionSet::const_iterator iter = _Positions.find(id, pos_comp_id());
@@ -121,10 +131,13 @@ void Trader::cover(Position::ID id, const boost::gregorian::date& dt, const doub
     } catch( const std::exception& ex ) {
         throw TraderException(ex.what());
     }
+    
+    // Return decrease in cash from the purchase
+    return -price*size;
 }
 
 
-void Trader::close(Position::ID id, const boost::gregorian::date& dt, const double price) throw(TraderException)
+double Trader::close(Position::ID id, const boost::gregorian::date& dt, const double price) throw(TraderException)
 {
     // Find existing position
     PositionSet::const_iterator iter = _Positions.find(id, pos_comp_id());
@@ -137,6 +150,15 @@ void Trader::close(Position::ID id, const boost::gregorian::date& dt, const doub
         pPos->close(dt, price);
     } catch( const std::exception& ex ) {
         throw TraderException(ex.what());
+    }
+    
+    // Return change in cash from the closure
+    if (pPos->type() == Position::LONG) {
+        return price * pPos->size();
+    } else if (pPos->type() == Position::SHORT) {
+        return -price * pPos->size();
+    } else {
+        throw TraderException("Unknown position type");
     }
 }
 

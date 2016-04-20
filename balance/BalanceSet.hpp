@@ -52,31 +52,16 @@ public:
                     const double init,
                     const std::vector<std::string>& names_);
     
-//    double get_initial_capital(void) const;
-    
-//    double _update_capital(const std::string& name, const boost::gregorian::date&, const double); // inner function
-//    void update_capital(const Execution* pExe);  // this one is for adding new execution
-//    void update_capital(const boost::gregorian::date&, const PositionSet& openPos); // EOD
-
-    
-    update_capital()
-    input : const std::map<std::string, int>& share_book,
-            const boost::gregorian::date& today
-    steps : for each item in name,
-        if name in share_book, read DB::instance().close() price, create Balance(name, today, close), insert
-        else create Balance(name, today, 0), insert
-    dependency : DB
-                 Should DB go to data.a and balance.a be dependent on data.a??
-            
-    what to do with short positions?? negative balance makes sense?? if hedged, net position is zero??
-        
+    void update_capital(const std::map<std::string, int>& share_book,
+                        const double netcash,
+                        const boost::gregorian::date& today);
     
     void print(void) const;
     
 //    std::map<boost::gregorian::date, double> monthly(const std::set<boost::gregorian::date>&) const;
 //    std::vector<double> monthly_ret(const std::set<boost::gregorian::date>&) const;
-//    
-//    void export_to_csv(void) const;
+    
+    void export_to_csv(void) const;
     
 private:
     static std::auto_ptr<BalanceSet> _pInstance;

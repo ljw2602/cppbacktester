@@ -93,11 +93,14 @@ void date_check(const boost::gregorian::date& today)
 }
 
 
-void ETFTrader::daily_execution(std::map<std::string, int>& share_book,
-                                std::map<std::string, int>& order_book,
-                                const boost::gregorian::date& today)
+double ETFTrader::daily_execution(std::map<std::string, int>& share_book,
+                                  std::map<std::string, int>& order_book,
+                                  const boost::gregorian::date& today)
 {
     // Execute all orders in order_book, update share_book
+    // Return cash settlement
+    
+    double netcash = 0.0;
     
     while (!order_book.empty())
     {
@@ -120,21 +123,21 @@ void ETFTrader::daily_execution(std::map<std::string, int>& share_book,
             
             if (target_share < current_share) {
                 std::cout << "short sell extra " << name << " " << current_share-target_share << " shares" << std::endl;
-                sell_short(id, today, open_price, current_share-target_share);
+                netcash += sell_short(id, today, open_price, current_share-target_share);
             }
             else if (current_share < target_share && target_share < 0) {
                 std::cout << "cover " << name << " " << target_share-current_share << " shares" << std::endl;
-                cover(id, today, open_price, target_share-current_share);
+                netcash += cover(id, today, open_price, target_share-current_share);
             }
             else if (target_share == 0) {
                 std::cout << "close " << name << std::endl;
-                close(id, today, open_price);
+                netcash += close(id, today, open_price);
             }
             else if (target_share > 0) {
                 std::cout << "close " << name << std::endl;
                 std::cout << "and buy new " << name << " " << target_share << " shares" << std::endl;
-                close(id, today, open_price);
-                buy(name, today, open_price, target_share);
+                netcash += close(id, today, open_price);
+                netcash += buy(name, today, open_price, target_share);
             }
             else {
                 throw TraderException("Order submission failed");
@@ -152,21 +155,21 @@ void ETFTrader::daily_execution(std::map<std::string, int>& share_book,
             
             if (current_share < target_share) {
                 std::cout << "buy extra " << name << " " << target_share-current_share << " shares" << std::endl;
-                buy(id, today, open_price, target_share-current_share);
+                netcash += buy(id, today, open_price, target_share-current_share);
             }
             else if (target_share < current_share && target_share > 0) {
                 std::cout << "sell " << name << " " << current_share-target_share << " shares" << std::endl;
-                sell(id, today, open_price, current_share-target_share);
+                netcash += sell(id, today, open_price, current_share-target_share);
             }
             else if (target_share == 0) {
                 std::cout << "close " << name << std::endl;
-                close(id, today, open_price);
+                netcash += close(id, today, open_price);
             }
             else if (target_share < 0) {
                 std::cout << "close " << name << std::endl;
                 std::cout << "and sell short new " << name << " " << -target_share << " shares" << std::endl;
-                close(id, today, open_price);
-                sell_short(name, today, open_price, -target_share);
+                netcash += close(id, today, open_price);
+                netcash += sell_short(name, today, open_price, -target_share);
             }
             else {
                 throw TraderException("Order submission failed");
@@ -180,11 +183,11 @@ void ETFTrader::daily_execution(std::map<std::string, int>& share_book,
             
             if (target_share < 0) {
                 std::cout << "short sell new " << name << " " << -target_share << " shares" << std::endl;
-                sell_short(name, today, open_price, -target_share);
+                netcash += sell_short(name, today, open_price, -target_share);
             }
             else if (target_share > 0) {
                 std::cout << "buy new " << name << " " << target_share << " shares" << std::endl;
-                buy(name, today, open_price, target_share);
+                netcash += buy(name, today, open_price, target_share);
             }
             else {
                 throw TraderException("Order submission failed");
@@ -204,10 +207,13 @@ void ETFTrader::daily_execution(std::map<std::string, int>& share_book,
     
     // Re-assure order_book is empty
     assert(order_book.empty());
+    
+    return netcash;
 }
 
 
 void daily_settlement(const std::map<std::string, int>& share_book,
+                      const double netcash,
                       const boost::gregorian::date& today)
 {
     // EOD balance check
@@ -243,7 +249,7 @@ void ETFTrader::run() throw(TraderException)
         date_check(today);
         
         // Execute all orders from the previous day
-        daily_execution(share_book, order_book, today);
+        double netcash = daily_execution(share_book, order_book, today);
         
         if ( today == *pMon && today != *(dt_day.rbegin()) ) {  // every EOM except the last day
             
@@ -257,7 +263,7 @@ void ETFTrader::run() throw(TraderException)
             pMon++; DB::instance().monthly_advance();
         }
         
-        daily_settlement(share_book, today);
+        daily_settlement(share_book, netcash, today);
         
         // Advance daily pointers
         DB::instance().daily_advance();
