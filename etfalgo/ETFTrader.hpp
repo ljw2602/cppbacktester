@@ -11,6 +11,7 @@
 
 #include "Trader.hpp"
 #include "DB.hpp"
+#include "BalanceSet.hpp"
 
 
 class ETFTrader: public Trader

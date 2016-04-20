@@ -929,6 +929,8 @@ dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/Series.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/FileDriver.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/ActionSeries.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/TA.hpp \
   /usr/local/include/ta-lib/ta_libc.h \
   /usr/local/include/ta-lib/ta_common.h \

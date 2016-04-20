@@ -10,7 +10,9 @@
 #include "TA.hpp"
 
 
-ETFTrader::ETFTrader(const double initial): initial_capital(initial) { }
+ETFTrader::ETFTrader(const double initial): initial_capital(initial)
+{
+}
 
 
 void preprocess_data(unsigned yr, unsigned mon)
@@ -63,16 +65,26 @@ std::map<double, std::string, std::greater<double> > monthly_estimation()
 ///////////////////////////
 // THIS NEEDS MORE WORK! //
 ///////////////////////////
-int SHARES = -1;
+int SHARES = 10;
 std::map<std::string, int> monthly_allocation(const std::map<double, std::string, std::greater<double> >& est)
 {
     // Allocate asset weight, based on the estimation()
     // Use Black-Litterman
     
     std::map<std::string, int> target;
+    
+    // set target shares
     target.insert( std::pair<std::string, int>(est.begin()->second, SHARES) );
     target.insert( std::pair<std::string, int>(est.rbegin()->second, -SHARES) );
-    SHARES++;SHARES++;
+    
+    // set others to zero
+    std::vector<std::string> symbols = DB::instance().dblist();
+    for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); it++ ) {
+        if (target.find(*it) == target.end())
+            target.insert( std::pair<std::string, int>(*it, 0) );
+    }
+    
+//    SHARES -= 10;
     std::cout << "Target:" << std::endl;
     for (std::map<std::string, int>::const_iterator it = target.begin(); it != target.end(); it++) {
         std::cout << it->first << " " << it->second << std::endl;
@@ -110,6 +122,7 @@ double ETFTrader::daily_execution(std::map<std::string, int>& share_book,
         double open_price = DB::instance().get(name).pDaily()->second->open();
         
         if (target_share == current_share) {
+            order_book.erase(name);
             continue;
         }
         
@@ -216,8 +229,15 @@ void daily_settlement(const std::map<std::string, int>& share_book,
                       const double netcash,
                       const boost::gregorian::date& today)
 {
-    // EOD balance check
     // EOD split & dividend recognition
+    // EOD balance check
+    
+    CALL YAHOOACTION
+    IF ACTION HAPPENDS TODAY, APPLY THAT TO BALANCE
+        IF DIVIDEND, ADD TO NETCASH
+        IF SPLIT, CHANGE NUMSHARES IN SHARE_BOOK (CONFIRM THAT CLOSE PRICE IS POST-SPLIT)
+    
+    BalanceSet::instance().update_capital(share_book, netcash, today);
     
 }
 
@@ -240,6 +260,10 @@ void ETFTrader::run() throw(TraderException)
     std::vector<boost::gregorian::date>::const_iterator pDay = dt_day.begin();
     std::vector<boost::gregorian::date>::const_iterator pMon = dt_mon.begin();
     
+    // Initialize balance
+    BalanceSet::instance().initialize(*pDay, initial_capital, DB::instance().dblist());
+    
+    // Declare share book (track current shares) and order book (carry orders)
     std::map<std::string, int> share_book, order_book;
     
     for ( ; pDay != dt_day.end(); pDay++) {

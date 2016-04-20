@@ -39,14 +39,9 @@ void positionset();
 void etftrader();
 void etftrader_offset();
 void etftrader_run();
+void balance();
 
 int main() {
-    
-    USE TRADER CLASS TO RUN EXECUTIONS AND CHECK BALANCE SHEET
-    NEED TO STOP TRADING WHEN CASH GOES BELOW ZERO
-    
-    ADD ACTION ITEMS
-    
     
     FileDriver fd;
     date load_begin(from_simple_string(string("2005-2-17")));
@@ -59,25 +54,19 @@ int main() {
     const string xlv_symbol("XLV");
     const string xlv_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLV.csv");
     const string xlv_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLV_actions.csv");
-    
+ 
+    const string xlf_symbol("XLF");
+    const string xlf_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLF.csv");
+    const string xlf_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLF_actions.csv");
+
     // load function advances the data to EOM
     DB::instance().load(xlu_symbol, xlu_price, xlu_action, fd, load_begin, load_end);
     DB::instance().load(xlv_symbol, xlv_price, xlv_action, fd, load_begin, load_end);
+    DB::instance().load(xlf_symbol, xlf_price, xlf_action, fd, load_begin, load_end);
     
-    date today(from_simple_string(string("2006-4-7")));
-    date tmr(from_simple_string(string("2006-4-11")));
-
-    vector<string> names;
-    names.push_back("XLU"); names.push_back("XLV");
+    ETFTrader one(500);
+    one.run();  // this function advances the data
     
-    BalanceSet::instance().initialize(today, 1000, names);
-    
-    std::map<std::string, int> share_book;
-    share_book.insert( std::pair<std::string, int>("XLU", 3) );
-    share_book.insert( std::pair<std::string, int>("XLV", -1) );
-    
-    BalanceSet::instance().update_capital(share_book, 10, tmr);
-
     BalanceSet::instance().print();
     BalanceSet::instance().export_to_csv();
     
@@ -96,6 +85,41 @@ int main() {
     
     return 0;
     
+}
+
+void balance() {
+    FileDriver fd;
+    date load_begin(from_simple_string(string("2005-2-17")));
+    date load_end(from_simple_string(string("2006-5-20")));
+    
+    const string xlu_symbol("XLU");
+    const string xlu_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLU.csv");
+    const string xlu_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLU_actions.csv");
+    
+    const string xlv_symbol("XLV");
+    const string xlv_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLV.csv");
+    const string xlv_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLV_actions.csv");
+    
+    // load function advances the data to EOM
+    DB::instance().load(xlu_symbol, xlu_price, xlu_action, fd, load_begin, load_end);
+    DB::instance().load(xlv_symbol, xlv_price, xlv_action, fd, load_begin, load_end);
+    
+    date today(from_simple_string(string("2006-4-7")));
+    date tmr(from_simple_string(string("2006-4-11")));
+    
+    vector<string> names;
+    names.push_back("XLU"); names.push_back("XLV");
+    
+    BalanceSet::instance().initialize(today, 1000, names);
+    
+    std::map<std::string, int> share_book;
+    share_book.insert( std::pair<std::string, int>("XLU", 3) );
+    share_book.insert( std::pair<std::string, int>("XLV", -1) );
+    
+    BalanceSet::instance().update_capital(share_book, 10, tmr);
+    
+    BalanceSet::instance().print();
+    BalanceSet::instance().export_to_csv();
 }
 
 void etftrader_run() {

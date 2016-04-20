@@ -60,7 +60,7 @@ void BalanceSet::print(void) const
     return;
 }
 
-#include "DB.hpp"
+
 void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
                                 const double netcash,
                                 const boost::gregorian::date& today)
@@ -82,8 +82,8 @@ void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
         }
     }
     
-    name_pair its = equal_range(CASH);
-    double prevcash = (*its.second)->balance();
+    name_pair its = equal_range(CASH);  // equal_range(key) returns [a, b)
+    double prevcash = (*(--its.second))->balance();  // its.second needs to be decreased by 1 to get latest one
     double cash = prevcash + netcash;
     
     BalancePtr pCASH(new Balance(CASH, today, cash));
@@ -92,124 +92,14 @@ void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
     
     BalancePtr pTOTAL(new Balance(TOTAL, today, total));
     insert(pTOTAL);
+    
+    if (cash < 0) {
+        export_to_csv();
+        throw BalanceException("Cash goes below zero; trading suspended");
+    }
 }
 
 /*
-struct update_balance {
-    update_balance(double new_balance_) : new_balance(new_balance_){}
-    
-    void operator()(boost::shared_ptr<Balance> pEOD)
-    {
-        pEOD->balance = new_balance;
-    }
-    
-private:
-    double new_balance;
-};
-
-double BalanceSet::_update_capital(const std::string& name, const boost::gregorian::date& dt, const double diff){
-    // 1. search name
-    // 2. if exists, add diff / if not, insert new dt
-    // 2. its date has to be either equal to or smaller than pExe->dt()
-    
-    if(empty())
-        throw BalanceException("BalanceSet empty; cannot update capital");
-    
-    try {
-        name_pair its = equal_range(name);
-        iterator it = its.second; it--;
-        
-        const boost::gregorian::date last_date = (*it)->dt;
-        const double last_value = (*it)->balance;
-        
-        if (last_date == dt) {
-            // if already exists, modify the balance
-            modify(it, update_balance(last_value + diff));
-        } else {
-            // if not, insert one
-            BalancePtr pBalance(new Balance(name, dt, last_value + diff));
-            insert(pBalance);
-        }
-        
-        return last_value + diff;
-        
-    } catch (std::exception& ex ) {
-        
-        std::cerr << ex.what() << std::endl;
-        exit(EXIT_FAILURE);
-        
-    }
-    
-}
-
-void BalanceSet::update_capital(const Execution* pExe){
-    
-    double diff;
-    if (pExe->action() == "Bought") {
-        diff = -(pExe->price() * pExe->size());
-    }
-    else if (pExe->action() ==  "Sold") {
-        diff = pExe->price() * pExe->size();
-    }
-    else if (pExe->action() ==  "Shorted") {
-        diff = pExe->price() * pExe->size();
-    }
-    else if (pExe->action() ==   "Covered") {
-        diff = -(pExe->price() * pExe->size());
-    }
-    else {
-        throw BalanceException("Unknown type of execution");
-    }
-    
-    _update_capital(CASH, pExe->dt(), diff);
-    
-    //    for (const_iterator it = begin(); it != end(); it++) {
-    //        (*it)->print();
-    //    }
-    
-    return;
-}
-
-void BalanceSet::update_capital(const boost::gregorian::date& dt, const PositionSet& openPos){
-    // 1. Cash update
-    // 2. Open position EOD update
-    
-    double EOD_total = 0;
-    
-    EOD_total += _update_capital(CASH, dt, 0);
-    
-    for (int i = 0; i < names.size(); i++) {
-        
-        std::string name = names[i];
-        PositionSet::by_symbol::const_iterator symbol_key_end = openPos.get<1>().find(name);
-        
-        double eod_vaue;
-        if (symbol_key_end == openPos.get<1>().end()) {
-            // if name is not in open position, add 0
-            eod_vaue = 0;
-            BalancePtr pBalance(new Balance(name, dt, eod_vaue));
-            insert(pBalance);
-        } else {
-            // else, add close price
-            eod_vaue = Series::EODDB::instance().get(name).at(dt).close;
-            BalancePtr pBalance(new Balance(name, dt, eod_vaue));
-            insert(pBalance);
-        }
-        EOD_total += eod_vaue;
-    }
-    
-    BalancePtr pTotal(new Balance(TOTAL, dt, EOD_total));
-    insert(pTotal);
-    
-    //    std::cout << "EOD summary" << std::endl;
-    //    for (const_iterator it = begin(); it != end(); it++) {
-    //        (*it)->print();
-    //    }
-    
-    return;
-}
-
-
 std::map<boost::gregorian::date, double> BalanceSet::monthly(const std::set<boost::gregorian::date>& EOMdate) const {
     name_pair its = equal_range(TOTAL);
     std::map<boost::gregorian::date, double> EOD;

@@ -144,22 +144,26 @@ double Trader::close(Position::ID id, const boost::gregorian::date& dt, const do
     if( iter == _Positions.end() )
         throw TraderException("Can't find position");
     
-    // Close position
+    // Calculate change in cash from the closure (shld be placed before closing the position)
     PositionPtr pPos = *iter;
+    double netcash;
+    
+    if (pPos->type() == Position::LONG) {
+        netcash = price * pPos->size();
+    } else if (pPos->type() == Position::SHORT) {
+        netcash = -price * pPos->size();
+    } else {
+        throw TraderException("Unknown position type");
+    }
+
+    // Close position
     try {
         pPos->close(dt, price);
     } catch( const std::exception& ex ) {
         throw TraderException(ex.what());
     }
     
-    // Return change in cash from the closure
-    if (pPos->type() == Position::LONG) {
-        return price * pPos->size();
-    } else if (pPos->type() == Position::SHORT) {
-        return -price * pPos->size();
-    } else {
-        throw TraderException("Unknown position type");
-    }
+    return netcash;
 }
 
 

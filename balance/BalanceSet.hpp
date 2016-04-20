@@ -20,6 +20,7 @@
 #include <boost/multi_index/mem_fun.hpp>
 
 #include "Balance.hpp"
+#include "DB.hpp"
 
 
 typedef boost::shared_ptr<Balance> BalancePtr;

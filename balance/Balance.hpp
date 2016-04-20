@@ -40,8 +40,8 @@ public:
             const boost::gregorian::date dt_,
             const double balance_): _name(name_), _dt(dt_), _balance(balance_) {}
     
-    std::string name() const { return _name; }
     boost::gregorian::date dt() const { return _dt; }
+    std::string name() const { return _name; }
     double balance() const { return _balance; }
     
     void print() const {
