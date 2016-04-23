@@ -21,9 +21,6 @@ Asset::Asset(const std::string& price_file, FileDriver& driver, const boost::gre
     
     _pMonthly = _monthly->begin();
     
-//    _pAction = _action->last_in_month(begin.year(), begin.month()+1);
-//    if (_pAction == _action->end())
-//        std::cout << "No action is recorded during this period" << std::endl;
 }
 
 
@@ -40,7 +37,8 @@ Asset::Asset(const std::string& price_file, const std::string& action_file, File
     
     _pMonthly = _monthly->begin();
     
-    _pAction = _action->last_in_month(begin.year(), begin.month()+1);
+    _pAction = _action->after(_pMonthly->first, 0);  // advance pAction to the one after the first trading day
+
     if (_pAction == _action->end())
         std::cout << "No action is recorded during this period" << std::endl;
 }
@@ -50,5 +48,8 @@ void Asset::advance(unsigned yr, unsigned mon)
 {
     _pDaily = _daily->last_in_month(_pDaily->first.year()+yr, _pDaily->first.month()+mon);
     _pMonthly = _monthly->last_in_month(_pMonthly->first.year()+yr, _pMonthly->first.month()+mon);
-    _pAction = _action->last_in_month(_pAction->first.year()+yr, _pAction->first.month()+mon);
+    
+    if (_action) {
+        _pAction = _action->after(_pMonthly->first, 0);  // advance pAction to the one after the first trading day
+    }
 }

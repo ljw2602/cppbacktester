@@ -8,6 +8,7 @@
 
 #include "DB.hpp"
 #include <assert.h>
+#include <string.h>
 
 
 std::auto_ptr<DB> DB::_pInstance;
@@ -58,16 +59,19 @@ void DB::advance(unsigned yr, unsigned mon)
     else
         std::cout << "Data advanced by " << yr << " year and " << mon << " months" << std::endl;
     
-    for (DBmap::const_iterator it = _db.begin(); it != _db.end(); it++) {
-        boost::gregorian::date start = (*it->second->pDaily()).first;  // date pointed by pDaily
-        boost::gregorian::date end =  it->second->daily().rbegin()->first;  // end of PriceSeries
-        unsigned monthdiff = (end.year() - start.year())*12 + (end.month() - start.month());
-        
-        if (yr*12 + mon >= monthdiff)  // check data is longer than requested advancement
-            throw DBException("Data is shorter than requested advancement");
-        
-        it->second->advance(yr, mon);
-        
+    try {
+        for (DBmap::const_iterator it = _db.begin(); it != _db.end(); it++) {
+            boost::gregorian::date start = (*it->second->pDaily()).first;  // date pointed by pDaily
+            boost::gregorian::date end =  it->second->daily().rbegin()->first;  // end of PriceSeries
+            unsigned monthdiff = (end.year() - start.year())*12 + (end.month() - start.month());
+            
+            if (yr*12 + mon >= monthdiff)  // check data is longer than requested advancement
+                throw DBException("Data is shorter than requested advancement");
+            
+            it->second->advance(yr, mon);
+        }
+    } catch (const std::exception& ex ) {
+        throw DBException(ex.what());
     }
 }
 

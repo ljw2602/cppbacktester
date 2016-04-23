@@ -44,8 +44,8 @@ void balance();
 int main() {
     
     FileDriver fd;
-    date load_begin(from_simple_string(string("2005-2-17")));
-    date load_end(from_simple_string(string("2006-5-20")));
+    date load_begin(from_simple_string(string("2012-12-17")));
+    date load_end(from_simple_string(string("2014-4-20")));
     
     const string xlu_symbol("XLU");
     const string xlu_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLU.csv");
@@ -59,14 +59,19 @@ int main() {
     const string xlf_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLF.csv");
     const string xlf_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/ETF/XLF_actions.csv");
 
+    const string nflx_symbol("GOOG");
+    const string nflx_price("/Users/jeongwon/Documents/GitHub/hudsonV2/db/FANG/GOOG.csv");
+    const string nflx_action("/Users/jeongwon/Documents/GitHub/hudsonV2/db/FANG/GOOG_actions.csv");
+
     // load function advances the data to EOM
     DB::instance().load(xlu_symbol, xlu_price, xlu_action, fd, load_begin, load_end);
     DB::instance().load(xlv_symbol, xlv_price, xlv_action, fd, load_begin, load_end);
     DB::instance().load(xlf_symbol, xlf_price, xlf_action, fd, load_begin, load_end);
+    DB::instance().load(nflx_symbol, nflx_price, nflx_action, fd, load_begin, load_end);
     
-    ETFTrader one(500);
-    one.run();  // this function advances the data
-    
+    ETFTrader one(500000);
+    one.run();  // this function advances the data*/
+
     BalanceSet::instance().print();
     BalanceSet::instance().export_to_csv();
     
@@ -165,7 +170,7 @@ void etftrader_offset() {
     for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); it++ ) {
         cout << *it << endl;
         
-        PriceSeries ds = DB::instance().get(*it).daily();
+        //PriceSeries ds = DB::instance().get(*it).daily();
         PriceSeries::const_iterator pDaily = DB::instance().get(*it).pDaily();
         cout << "Daily Price" << endl;
         for (; pDaily != DB::instance().get(*it).daily().end(); pDaily++) {

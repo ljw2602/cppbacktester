@@ -83,7 +83,7 @@ public:
                 if( driver.next(_reader) == false )
                     continue;
                 if( TS::insert(typename TS::value_type(_reader.date(), std::shared_ptr<LP>(new LP(_reader)))).second == false ) {
-                    std::cerr << "Duplicate _readerord " << _reader.date() << std::endl;
+                    std::cerr << "Potential duplicated record " << _reader.date() << " in " << filename << std::endl;
                     continue;
                 }
                 
@@ -117,7 +117,7 @@ public:
                     continue;					// out of range
                 
                 if( TS::insert(typename TS::value_type(_reader.date(), std::shared_ptr<LP>(new LP(_reader)))).second == false ) {
-                    std::cerr << "Duplicate record " << _reader.date() << std::endl;
+                    std::cerr << "Potential duplicated record " << _reader.date() << " in " << filename << std::endl;
                     continue;
                 }
                 

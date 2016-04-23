@@ -44,9 +44,9 @@ public:
     ActionSeries::const_iterator pAction() const { return _pAction; }
     
     void advance(unsigned yr, unsigned mon);  // advance all pointers by yr and mon
-    void daily_advance() { _pDaily++; }
-    void monthly_advance() { _pMonthly++; }
-    void action_advance() { _pAction++; }
+    void daily_advance() const { _pDaily++; }
+    void monthly_advance() const { _pMonthly++; }
+    void action_advance() const { _pAction++; }
     
 private:
     std::shared_ptr<PriceSeries> _daily, _monthly;

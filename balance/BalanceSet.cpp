@@ -69,13 +69,13 @@ void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
     
     for (std::vector<std::string>::const_iterator it = names.begin(); it != names.end(); it++) {
         if ( share_book.find(*it) != share_book.end() ) {
-            int target_shares = share_book.at(*it);
+            int eod_shares = share_book.at(*it);
             double price = DB::instance().get(*it).daily().find(today)->second->close();
             assert(DB::instance().get(*it).daily().find(today)->first == today);
             
-            BalancePtr pBalance( new Balance(*it, today, target_shares * price) );
+            BalancePtr pBalance( new Balance(*it, today, eod_shares * price) );
             insert(pBalance);
-            total += target_shares * price;
+            total += eod_shares * price;
         } else {
             BalancePtr pBalance( new Balance(*it, today, 0) );
             insert(pBalance);

@@ -215,6 +215,7 @@ double ETFTrader::daily_execution(std::map<std::string, int>& share_book,
         }
         
         order_book.erase(name);
+        if (target_share == 0) share_book.erase(name);
         
     }
     
@@ -225,19 +226,55 @@ double ETFTrader::daily_execution(std::map<std::string, int>& share_book,
 }
 
 
-void daily_settlement(const std::map<std::string, int>& share_book,
+void daily_settlement(std::map<std::string, int>& share_book,
                       const double netcash,
                       const boost::gregorian::date& today)
 {
     // EOD split & dividend recognition
     // EOD balance check
     
-    CALL YAHOOACTION
-    IF ACTION HAPPENDS TODAY, APPLY THAT TO BALANCE
-        IF DIVIDEND, ADD TO NETCASH
-        IF SPLIT, CHANGE NUMSHARES IN SHARE_BOOK (CONFIRM THAT CLOSE PRICE IS POST-SPLIT)
+//    CALL YAHOOACTION
+//    IF ACTION HAPPENDS TODAY, APPLY THAT TO BALANCE
+//        IF DIVIDEND, ADD TO NETCASH
+//        IF SPLIT, CHANGE NUMSHARES IN SHARE_BOOK (CONFIRM THAT CLOSE PRICE IS POST-SPLIT)
     
-    BalanceSet::instance().update_capital(share_book, netcash, today);
+    double netdividend = 0.0;
+    
+    std::vector<std::string> symbols = DB::instance().dblist();
+    for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); it++ )
+    {
+        std::string sym = *it;
+        ActionSeries::const_iterator pAS = DB::instance().get(sym).pAction();
+        
+        if (pAS->first != today) continue;
+        
+        if (pAS->second->action() == "dividend")
+        {
+            if (share_book.find(sym) != share_book.end())
+            {
+                double dividend = pAS->second->ratio();
+                int current_share = share_book.at(sym);
+                netdividend += current_share * dividend;
+                std::cout << "Dividend from " << sym << " is " << dividend << " per share on " << today << std::endl;
+                std::cout << "Received amount is " << current_share * dividend << std::endl;
+            }
+            DB::instance().get(sym).action_advance();
+        }
+        else if (pAS->second->action() == "split")
+        {
+            if (share_book.find(sym) != share_book.end())
+            {
+                int split = 1/pAS->second->ratio();
+                int current_share = share_book.at(sym);
+                share_book.at(sym) = current_share * split;
+                std::cout << sym << " has splitted into 1:" << split << " on " << today << std::endl;
+                std::cout << "Holding share changed from " << current_share << " to " << share_book.at(sym) << std::endl;
+            }
+            DB::instance().get(sym).action_advance();
+        }
+    }
+    
+    BalanceSet::instance().update_capital(share_book, netcash + netdividend, today);
     
 }
 
@@ -264,6 +301,7 @@ void ETFTrader::run() throw(TraderException)
     BalanceSet::instance().initialize(*pDay, initial_capital, DB::instance().dblist());
     
     // Declare share book (track current shares) and order book (carry orders)
+    // They only carry currently held assets (if order is executed or held share is zero, they are erased)
     std::map<std::string, int> share_book, order_book;
     
     for ( ; pDay != dt_day.end(); pDay++) {
