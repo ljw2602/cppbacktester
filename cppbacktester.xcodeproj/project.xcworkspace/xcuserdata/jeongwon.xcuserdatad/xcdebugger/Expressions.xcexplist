@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "BalanceSet::update_capital(std::__1::map&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int, std::__1::less&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt;, std::__1::allocator&lt;std::__1::pair&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const, int&gt; &gt; &gt; const&amp;, double, boost::gregorian::date const&amp;):BalanceSet.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "(*its.first)-&gt;balance()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Asset::Asset(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;, FileDriver&amp;, boost::gregorian::date const&amp;, boost::gregorian::date const&amp;):Asset.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "begin.month()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Asset::advance(unsigned int, unsigned int):Asset.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "_pAction-&gt;first">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:main.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "pAction-&gt;first.year()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Series&lt;YahooAction&gt;::_load(FileDriver&amp;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;, boost::gregorian::date const&amp;, boost::gregorian::date const&amp;):Series.hpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "_reader.date().month()">
+            </PersistentString>
+            <PersistentString
+               value = "_reader.date().day()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

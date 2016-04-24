@@ -36,10 +36,9 @@ BuyExecution::BuyExecution(const std::string& symbol,
                            const double price,
                            unsigned size): Execution(symbol, id, dt, price, size)
 {
-    std::cout << symbol << " ";
-    this->print();
-    std::cout << std::endl;
-    //    BalanceSet::instance().update_capital(this);
+#ifdef PRINT
+    std::cout << symbol << " "; this->print(); std::cout << std::endl;
+#endif
 }
 
 
@@ -49,10 +48,9 @@ SellExecution::SellExecution(const std::string& symbol,
                              const double price,
                              unsigned size): Execution(symbol, id, dt, price, size)
 {
-    std::cout << symbol << " ";
-    this->print();
-    std::cout << std::endl;
-    //    BalanceSet::instance().update_capital(this);
+#ifdef PRINT
+    std::cout << symbol << " "; this->print(); std::cout << std::endl;
+#endif
 }
 
 
@@ -62,11 +60,9 @@ SellShortExecution::SellShortExecution(const std::string& symbol,
                                        const double price,
                                        unsigned size): Execution(symbol, id, dt, price, size)
 {
-    
-    std::cout << symbol << " ";
-    this->print();
-    std::cout << std::endl;
-    //    BalanceSet::instance().update_capital(this);
+#ifdef PRINT
+    std::cout << symbol << " "; this->print(); std::cout << std::endl;
+#endif
 }
 
 
@@ -76,9 +72,7 @@ CoverExecution::CoverExecution(const std::string& symbol,
                                const double price,
                                unsigned size): Execution(symbol, id, dt, price, size)
 {
-    
-    std::cout << symbol << " ";
-    this->print();
-    std::cout << std::endl;
-    //    BalanceSet::instance().update_capital(this);
+#ifdef PRINT
+    std::cout << symbol << " "; this->print(); std::cout << std::endl;
+#endif
 }

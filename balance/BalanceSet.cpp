@@ -61,6 +61,53 @@ void BalanceSet::print(void) const
 }
 
 
+double BalanceSet::split_and_dividend(std::map<std::string, int>& share_book,
+                                      const boost::gregorian::date& today)
+{
+    double netdividend = 0.0;
+    
+    std::vector<std::string> symbols = DB::instance().dblist();
+    for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); it++ )
+    {
+        std::string sym = *it;
+        ActionSeries::const_iterator pAS = DB::instance().get(sym).pAction();
+        
+        if (pAS->first != today) continue;
+        
+        if (pAS->second->action() == "dividend")
+        {
+            if (share_book.find(sym) != share_book.end())
+            {
+                double dividend = pAS->second->ratio();
+                int current_share = share_book.at(sym);
+                netdividend += current_share * dividend;
+#ifdef PRINT
+                std::cout << "Dividend from " << sym << " is " << dividend << " per share on " << today << std::endl;
+                std::cout << "Received amount is " << current_share * dividend << std::endl;
+#endif
+            }
+            DB::instance().get(sym).action_advance();
+        }
+        else if (pAS->second->action() == "split")
+        {
+            if (share_book.find(sym) != share_book.end())
+            {
+                int split = 1/pAS->second->ratio();
+                int current_share = share_book.at(sym);
+                share_book.at(sym) = current_share * split;
+#ifdef PRINT
+                std::cout << sym << " has splitted into 1:" << split << " on " << today << std::endl;
+                std::cout << "Holding share changed from " << current_share << " to " << share_book.at(sym) << std::endl;
+#endif
+            }
+            DB::instance().get(sym).action_advance();
+        }
+    }
+    
+    return netdividend;
+}
+
+
 void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
                                 const double netcash,
                                 const boost::gregorian::date& today)
@@ -97,6 +144,13 @@ void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
         export_to_csv();
         throw BalanceException("Cash goes below zero; trading suspended");
     }
+}
+
+double BalanceSet::latest_total() const
+{
+    name_pair its = equal_range(TOTAL);
+    double prevtotal = (*(--its.second))->balance();
+    return prevtotal;
 }
 
 /*

@@ -53,9 +53,14 @@ public:
                     const double init,
                     const std::vector<std::string>& names_);
     
+    double split_and_dividend(std::map<std::string, int>& share_book,
+                              const boost::gregorian::date& today);
+    
     void update_capital(const std::map<std::string, int>& share_book,
                         const double netcash,
                         const boost::gregorian::date& today);
+    
+    double latest_total() const;
     
     void print(void) const;
     

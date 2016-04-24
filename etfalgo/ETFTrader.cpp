@@ -9,9 +9,11 @@
 #include "ETFTrader.hpp"
 #include "TA.hpp"
 
+//#define PRINT 1
 
-ETFTrader::ETFTrader(const double initial): initial_capital(initial)
+ETFTrader::ETFTrader(const double initial, const TreasurySeries& ts): initial_capital(initial)
 {
+    rf = std::shared_ptr<TreasurySeries>(new TreasurySeries(ts));
 }
 
 
@@ -49,46 +51,126 @@ std::map<double, std::string, std::greater<double> > yoy_return_map()
     return ret;
 }
 
-std::map<double, std::string, std::greater<double> > monthly_estimation()
+std::map<double, std::string, std::greater<double> > monthly_estimation(const boost::gregorian::date& today)
 {
     // Return estimation result
     
     std::map<double, std::string, std::greater<double> > est = yoy_return_map();
-    std::cout << "Estimation:" << std::endl;
+#ifdef PRINT
+    std::cout << "YOY return (%) on " << today << std::endl;
     for (std::map<double, std::string>::const_iterator it = est.begin(); it != est.end(); it++) {
         std::cout << it->second << " " << it->first << std::endl;
     }
+#endif
     return est;
 }
 
 
-///////////////////////////
-// THIS NEEDS MORE WORK! //
-///////////////////////////
-int SHARES = 10;
-std::map<std::string, int> monthly_allocation(const std::map<double, std::string, std::greater<double> >& est)
+std::map<std::string, int> monthly_allocation(const std::map<double, std::string, std::greater<double> >& est, double minimum, const boost::gregorian::date& today)
 {
     // Allocate asset weight, based on the estimation()
-    // Use Black-Litterman
+    // Use Black-Litterman adjusted expected return
+    // View1: first > last by 5% +/- 2% with 10% confidence
+    // View2: first + second > last + secondtolast by 5% +/- 2% with 50% confidence
+
+    // historical data are assumed to be fixed
+    double ret_arr[] = {0.093231883,0.066463536,0.102390465,0.044440414,0.082293776,0.083130299,0.091628486,0.057314101,0.07350659};
+    const std::vector<double> hist_return_(ret_arr, ret_arr + sizeof(ret_arr) / sizeof(ret_arr[0]));
     
+    double std_arr[] = {0.186049202,0.121432041,0.218847865,0.218700927,0.141263328,0.186681638,0.220654344,0.243276828,0.151786818};
+    const std::vector<double> hist_stdev_(std_arr, std_arr + sizeof(std_arr) / sizeof(std_arr[0]));
+    
+    double wt_arr[] = {0.1142,0.1036,0.142,0.1764,0.1346,0.0745,0.0261,0.1432,0.0854};
+    const std::vector<double> market_cap_(wt_arr, wt_arr + sizeof(wt_arr) / sizeof(wt_arr[0]));
+    
+    double corr_arr[] = {1.000000,0.516009,0.450629,0.779473,0.692744,0.819249,0.751527,0.688865,0.328960,
+        0.516009,1.000000,0.360485,0.568740,0.522199,0.545816,0.455247,0.293421,0.530845,
+        0.450629,0.360485,1.000000,0.472460,0.408279,0.619838,0.662851,0.398163,0.431011,
+        0.779473,0.568740,0.472460,1.000000,0.642018,0.789147,0.692757,0.511204,0.379559,
+        0.692744,0.522199,0.408279,0.642018,1.000000,0.693931,0.621979,0.615501,0.391552,
+        0.819249,0.545816,0.619838,0.789147,0.693931,1.000000,0.851001,0.653443,0.439556,
+        0.751527,0.455247,0.662851,0.692757,0.621979,0.851001,1.000000,0.552163,0.375685,
+        0.688865,0.293421,0.398163,0.511204,0.615501,0.653443,0.552163,1.000000,0.197714,
+        0.328960,0.530845,0.431011,0.379559,0.391552,0.439556,0.375685,0.197714,1.000000};
+    const std::vector<double> corr_(corr_arr, corr_arr + sizeof(corr_arr) / sizeof(corr_arr[0]));
+    
+    double v_arr[] = {0.05, 0.05};
+    const std::vector<double> v_(v_arr, v_arr + sizeof(v_arr) / sizeof(v_arr[0]));
+    
+    double vrange_arr[] = {0.02, 0.02};
+    const std::vector<double> v_range_(vrange_arr, vrange_arr + sizeof(vrange_arr) / sizeof(vrange_arr[0]));
+    
+    double vconf_arr[] = {0.1, 0.1};
+    const std::vector<double> v_conf_(vconf_arr, vconf_arr + sizeof(vconf_arr) / sizeof(vconf_arr[0]));
+
+    const std::string names_[] = {"XLY", "XLP", "XLE", "XLF", "XLV", "XLI", "XLB", "XLK", "XLU"};
+    const std::vector<std::string> names(names_, names_ + sizeof(names_) / sizeof(names_[0]));
+
+    ///// ^^ END OF FIXED INPUT ^^ /////
+    
+    std::map<double, std::string>::const_iterator it1 = est.begin();
+    std::map<double, std::string>::const_reverse_iterator it2 = est.rbegin();
+
     std::map<std::string, int> target;
-    
-    // set target shares
-    target.insert( std::pair<std::string, int>(est.begin()->second, SHARES) );
-    target.insert( std::pair<std::string, int>(est.rbegin()->second, -SHARES) );
-    
-    // set others to zero
-    std::vector<std::string> symbols = DB::instance().dblist();
-    for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); it++ ) {
-        if (target.find(*it) == target.end())
-            target.insert( std::pair<std::string, int>(*it, 0) );
+    for (int i = 0; i < names.size(); i++) {
+        target.insert( std::pair<std::string, int>(names[i], 0) );
     }
     
-//    SHARES -= 10;
-    std::cout << "Target:" << std::endl;
+    if (it1->first < minimum) {
+        // If highest return is negative, close all positions
+        std::cout << it1->first << " (highest ETF ret) < " << minimum << " (treasury ret): close all positions on " << today << std::endl;
+        return target;
+    }
+    
+    const std::string first = it1->second; it1++;
+    const std::string second = it1->second;
+    const std::string last = it2->second; it2++;
+    const std::string secondtolast = it2->second;
+    
+    std::map<std::string, double> name_wt;
+    for (int i = 0; i < names.size(); i++)
+        name_wt.insert(std::pair<std::string, double>(names_[i], wt_arr[i]));
+    
+    std::vector<double> p_;
+    for (int i = 0; i < names.size(); i++) {
+        if (names[i] == first) p_.push_back(1);
+        else if (names[i] == last) p_.push_back(-1);
+        else p_.push_back(0);
+    }
+    for (int i = 0; i < names.size(); i++) {
+        if (names[i] == first || names[i] == second) p_.push_back(name_wt.at(names[i])/(name_wt.at(first)+name_wt.at(second)));
+        else if (names[i] == last || names[i] == secondtolast) p_.push_back(-name_wt.at(names[i])/(name_wt.at(last)+name_wt.at(secondtolast)));
+        else p_.push_back(0);
+    }
+    
+#ifdef PRINT
+    std::cout << "P matrix on " << today << std::endl;
+    for (int i = 0; i < p_.size(); i++) {
+        std::cout << p_[i] << " ";
+    } std::cout << std::endl;
+#endif
+    
+    // Run Black-Litterman MV weight (gamma = 3, tau = 0.3 by default)
+    std::vector<double> target_wt = bl_norm_weight(hist_return_, hist_stdev_, market_cap_, corr_,
+                                                   p_,
+                                                   v_, v_range_, v_conf_);
+    
+    // Allocate 80% of latest total balance to equities
+    double total = BalanceSet::instance().latest_total();
+    
+    for (int i = 0; i < names.size(); i++) {
+        double price = DB::instance().get(names[i]).pMonthly()->second->close();
+        int target_share = target_wt[i] * (0.8*total) / price;
+        target.at(names[i]) = target_share;
+    }
+
+#ifdef PRINT
+    std::cout << "Allocated number of shares on " << today << std::endl;
     for (std::map<std::string, int>::const_iterator it = target.begin(); it != target.end(); it++) {
         std::cout << it->first << " " << it->second << std::endl;
     }
+#endif
+    
     return target;
 }
 
@@ -126,7 +208,9 @@ double ETFTrader::daily_execution(std::map<std::string, int>& share_book,
             continue;
         }
         
+#ifdef PRINT
         std::cout << name << " current " << current_share << " target " << target_share << std::endl;
+#endif
         
         if (current_share < 0) {
             
@@ -135,20 +219,28 @@ double ETFTrader::daily_execution(std::map<std::string, int>& share_book,
             Position::ID id = (*ps.begin())->id();
             
             if (target_share < current_share) {
+#ifdef PRINT
                 std::cout << "short sell extra " << name << " " << current_share-target_share << " shares" << std::endl;
+#endif
                 netcash += sell_short(id, today, open_price, current_share-target_share);
             }
             else if (current_share < target_share && target_share < 0) {
+#ifdef PRINT
                 std::cout << "cover " << name << " " << target_share-current_share << " shares" << std::endl;
+#endif
                 netcash += cover(id, today, open_price, target_share-current_share);
             }
             else if (target_share == 0) {
+#ifdef PRINT
                 std::cout << "close " << name << std::endl;
+#endif
                 netcash += close(id, today, open_price);
             }
             else if (target_share > 0) {
+#ifdef PRINT
                 std::cout << "close " << name << std::endl;
                 std::cout << "and buy new " << name << " " << target_share << " shares" << std::endl;
+#endif
                 netcash += close(id, today, open_price);
                 netcash += buy(name, today, open_price, target_share);
             }
@@ -167,20 +259,28 @@ double ETFTrader::daily_execution(std::map<std::string, int>& share_book,
             Position::ID id = (*ps.begin())->id();
             
             if (current_share < target_share) {
+#ifdef PRINT
                 std::cout << "buy extra " << name << " " << target_share-current_share << " shares" << std::endl;
+#endif
                 netcash += buy(id, today, open_price, target_share-current_share);
             }
             else if (target_share < current_share && target_share > 0) {
+#ifdef PRINT
                 std::cout << "sell " << name << " " << current_share-target_share << " shares" << std::endl;
+#endif
                 netcash += sell(id, today, open_price, current_share-target_share);
             }
             else if (target_share == 0) {
+#ifdef PRINT
                 std::cout << "close " << name << std::endl;
+#endif
                 netcash += close(id, today, open_price);
             }
             else if (target_share < 0) {
+#ifdef PRINT
                 std::cout << "close " << name << std::endl;
                 std::cout << "and sell short new " << name << " " << -target_share << " shares" << std::endl;
+#endif
                 netcash += close(id, today, open_price);
                 netcash += sell_short(name, today, open_price, -target_share);
             }
@@ -195,11 +295,15 @@ double ETFTrader::daily_execution(std::map<std::string, int>& share_book,
         else if (current_share == 0) {
             
             if (target_share < 0) {
+#ifdef PRINT
                 std::cout << "short sell new " << name << " " << -target_share << " shares" << std::endl;
+#endif
                 netcash += sell_short(name, today, open_price, -target_share);
             }
             else if (target_share > 0) {
+#ifdef PRINT
                 std::cout << "buy new " << name << " " << target_share << " shares" << std::endl;
+#endif
                 netcash += buy(name, today, open_price, target_share);
             }
             else {
@@ -232,56 +336,14 @@ void daily_settlement(std::map<std::string, int>& share_book,
 {
     // EOD split & dividend recognition
     // EOD balance check
-    
-//    CALL YAHOOACTION
-//    IF ACTION HAPPENDS TODAY, APPLY THAT TO BALANCE
-//        IF DIVIDEND, ADD TO NETCASH
-//        IF SPLIT, CHANGE NUMSHARES IN SHARE_BOOK (CONFIRM THAT CLOSE PRICE IS POST-SPLIT)
-    
-    double netdividend = 0.0;
-    
-    std::vector<std::string> symbols = DB::instance().dblist();
-    for (std::vector<std::string>::const_iterator it = symbols.begin(); it != symbols.end(); it++ )
-    {
-        std::string sym = *it;
-        ActionSeries::const_iterator pAS = DB::instance().get(sym).pAction();
-        
-        if (pAS->first != today) continue;
-        
-        if (pAS->second->action() == "dividend")
-        {
-            if (share_book.find(sym) != share_book.end())
-            {
-                double dividend = pAS->second->ratio();
-                int current_share = share_book.at(sym);
-                netdividend += current_share * dividend;
-                std::cout << "Dividend from " << sym << " is " << dividend << " per share on " << today << std::endl;
-                std::cout << "Received amount is " << current_share * dividend << std::endl;
-            }
-            DB::instance().get(sym).action_advance();
-        }
-        else if (pAS->second->action() == "split")
-        {
-            if (share_book.find(sym) != share_book.end())
-            {
-                int split = 1/pAS->second->ratio();
-                int current_share = share_book.at(sym);
-                share_book.at(sym) = current_share * split;
-                std::cout << sym << " has splitted into 1:" << split << " on " << today << std::endl;
-                std::cout << "Holding share changed from " << current_share << " to " << share_book.at(sym) << std::endl;
-            }
-            DB::instance().get(sym).action_advance();
-        }
-    }
-    
+
+    double netdividend = BalanceSet::instance().split_and_dividend(share_book, today);
     BalanceSet::instance().update_capital(share_book, netcash + netdividend, today);
-    
 }
 
 
 void summary()
 {
-    
 }
 
 
@@ -299,6 +361,7 @@ void ETFTrader::run() throw(TraderException)
     
     // Initialize balance
     BalanceSet::instance().initialize(*pDay, initial_capital, DB::instance().dblist());
+    first_trading_day = *pDay;
     
     // Declare share book (track current shares) and order book (carry orders)
     // They only carry currently held assets (if order is executed or held share is zero, they are erased)
@@ -316,23 +379,28 @@ void ETFTrader::run() throw(TraderException)
         if ( today == *pMon && today != *(dt_day.rbegin()) ) {  // every EOM except the last day
             
             // Estimation (e.g. YoY return)
-            std::map<double, std::string, std::greater<double> > est = monthly_estimation();
+            std::map<double, std::string, std::greater<double> > est = monthly_estimation(today);
             
             // Based on the estimation, determine the target shares
-            order_book = monthly_allocation(est);
+            double minimum = rf->find(today)->second->ret();  // treasury yield is threshold of investment
+            order_book = monthly_allocation(est, minimum, today);
             
             // Advance monthly pointers
             pMon++; DB::instance().monthly_advance();
         }
         
-        daily_settlement(share_book, netcash, today);
+        // Update BalanceSet with EOD price (no need to do this on the first trading day)
+        if (today != first_trading_day)
+            daily_settlement(share_book, netcash, today);
         
         // Advance daily pointers
         DB::instance().daily_advance();
     }
     
     PositionSet p = positions();
+#ifdef PRINT
     p.print();
+#endif
     
     summary();
 }
