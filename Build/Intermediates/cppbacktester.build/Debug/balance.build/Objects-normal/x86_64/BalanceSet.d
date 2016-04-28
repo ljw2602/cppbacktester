@@ -916,9 +916,9 @@ dependencies: \
   /usr/local/include/boost/token_iterator.hpp \
   /usr/local/include/boost/iterator/minimum_category.hpp \
   /usr/local/include/boost/token_functions.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/DB.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DB.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/DataEntry.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/Asset.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/Asset.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/Series.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/FileDriver.hpp \

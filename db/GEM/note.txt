@@ -1,0 +1,16 @@
+When Excel saves a spreadsheet as .csv file, it marks newline as “^M” instead of adding a line break
+Also, its date time formatting is poor.
+
+Both are not readable in C++. Thus, you may want to read it in iPython Pandas, export as CSV.
+
+import pandas as pd
+df = pd.read_csv("SP500TR_old.csv", index_col=0, parse_dates=0)
+df.to_csv("SP500TR.csv")
+
+
+
+
+
+
+Data used here are monthly data
+Since the code calculates EOM and executes BOM, there should be more granular data (e.g. at least EOM and BOM). Thus, I resampled the monthly data in daily frequency using Python.

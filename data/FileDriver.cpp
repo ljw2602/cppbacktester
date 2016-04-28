@@ -65,12 +65,18 @@ bool FileDriver::next(DataEntry& lp) throw(DriverException)
     if( _infile.eof() )
         return false;
     
-    typedef tokenizer<boost::char_separator<char> > TokensRdr;
-    getline(_infile, _line);
-    ++_linenum;
-    
-    TokensRdr tok(_line, boost::char_separator<char>(" ,\t\n\r"));
-    lp.update(tok, _linenum);
+    try {
+        typedef tokenizer<boost::char_separator<char> > TokensRdr;
+        getline(_infile, _line);
+        ++_linenum;
+        
+//        TokensRdr tok(_line, boost::char_separator<char>(" ,\t\n\r", "", keep_empty_tokens));
+        boost::char_separator<char> sep(",\t\n\r", "", boost::keep_empty_tokens);
+        TokensRdr tok(_line, sep);
+        lp.update(tok, _linenum);
+    } catch (std::exception) {
+        std::cout << _line << std::endl;
+    }
     
     return true;
 }
@@ -85,7 +91,9 @@ bool FileDriver::next(std::shared_ptr<DataEntry> pEntry) throw(DriverException)
     getline(_infile, _line);
     ++_linenum;
     
-    TokensRdr tok(_line, boost::char_separator<char>(" ,\t\n\r"));
+//    TokensRdr tok(_line, boost::char_separator<char>(" ,\t\n\r"));
+    boost::char_separator<char> sep(",\t\n\r", "", boost::keep_empty_tokens);
+    TokensRdr tok(_line, sep);
     pEntry->update(tok, _linenum);
     
     return true;

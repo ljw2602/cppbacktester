@@ -128,7 +128,7 @@ public:
         }	// while not EOF
         
         driver.close();
-        
+
         return TS::size();
     }
     

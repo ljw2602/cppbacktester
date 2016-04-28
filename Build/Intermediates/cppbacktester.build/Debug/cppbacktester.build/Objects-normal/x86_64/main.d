@@ -762,9 +762,8 @@ dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/EquitySeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/TreasurySeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/DB.hpp \
-  etfalgo/Asset.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/ActionSeries.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DB.hpp \
+  data/Asset.hpp data/ActionSeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Execution.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ExecutionSet.hpp \
   /usr/local/include/boost/multi_index_container.hpp \
@@ -931,8 +930,13 @@ dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/PositionSet.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFTrader.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp \
+  etfalgo/ETFFunctions.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/TA.hpp \
+  /usr/local/include/ta-lib/ta_libc.h \
+  /usr/local/include/ta-lib/ta_common.h \
+  /usr/local/include/ta-lib/ta_defs.h \
+  /usr/local/include/ta-lib/ta_func.h \
+  /usr/local/include/ta-lib/ta_abstract.h \
   /Users/jeongwon/Documents/GitHub/cppbacktester/allocation/BlackLitterman.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/allocation/Inversion.hpp \
   /usr/local/include/boost/numeric/ublas/matrix.hpp \
@@ -1038,4 +1042,8 @@ dependencies: \
   /usr/local/include/boost/numeric/ublas/vector_proxy.hpp \
   /usr/local/include/boost/numeric/ublas/triangular.hpp \
   /usr/local/include/boost/numeric/ublas/io.hpp \
-  /usr/local/include/gsl/gsl_cdf.h
+  /usr/local/include/gsl/gsl_cdf.h \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/gemalgo/GEMTrader.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/gemalgo/GEMFunctions.hpp

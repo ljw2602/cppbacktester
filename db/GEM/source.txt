@@ -1,0 +1,23 @@
+MSCI ACWI, ACWI ex USA, WORLD, WORLD ex USA
+https://www.msci.com/end-of-day-data-search
+Index Level: Price -> Gross (in order to get total return index)
+Only monthly data is available
+
+US Aggregated Bond index
+https://www.quandl.com/data/ML/AAATRI-US-AAA-Corporate-Bond-Total-Return-Index
+https://www.quandl.com/data/ML/TRI-US-Corporate-Bonds-Total-Return-Index
+
+
+US T-bill
+Annualized data was available on
+http://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/histretSP.html
+>> df = pd.read_excel('histretSP.xls',sheetname='Returns by year', skiprows=range(17), index_col=0, skip_footer=10, parse_dates=0)
+>> df['3-month T.Bill'].resample('1m',how='last',fill_method='ffill').to_csv('BIL.csv')
+
+S&P 500 total return (not price) index
+DataQuery
+Only monthly data is available
+
+
+Thorough backtesting of GEM is reproduced by http://www.sharpereturns.ca/p/performance.html
+http://stockcharts.com/h-sc/ui?s=SPY&p=D&yr=1&mn=0&dy=0&id=p41039941477&a=407337590

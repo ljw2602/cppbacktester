@@ -35,23 +35,27 @@ class Balance {
 public:
     Balance(std::string& name_,
             boost::gregorian::date dt_,
-            double balance_): _name(name_), _dt(dt_), _balance(balance_) {}
+            double balance_,
+            int shares_ = 0): _name(name_), _dt(dt_), _balance(balance_), _shares(shares_) {}
     Balance(const std::string& name_,
             const boost::gregorian::date dt_,
-            const double balance_): _name(name_), _dt(dt_), _balance(balance_) {}
+            const double balance_,
+            const int shares_ = 0): _name(name_), _dt(dt_), _balance(balance_), _shares(shares_) {}
     
     boost::gregorian::date dt() const { return _dt; }
     std::string name() const { return _name; }
     double balance() const { return _balance; }
+    int shares() const { return _shares; }
     
     void print() const {
-        std::cout << _name << "\t" << _dt << "\t" << _balance << std::endl;
+        std::cout << _name << "\t" << _dt << "\t" << _balance << "\t" << _shares << std::endl;
     }
     
 private:
     boost::gregorian::date _dt;
     std::string _name;
     double _balance;
+    int _shares;
     
 };
 

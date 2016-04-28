@@ -14,6 +14,16 @@
 		90DE1B501CCCF35700850EA7 /* BlackLitterman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90DE1B4D1CCCF35700850EA7 /* BlackLitterman.cpp */; };
 		90DE1B511CCCF35700850EA7 /* BlackLitterman.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DE1B4E1CCCF35700850EA7 /* BlackLitterman.hpp */; };
 		90DE1B521CCCF35700850EA7 /* Inversion.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DE1B4F1CCCF35700850EA7 /* Inversion.hpp */; };
+		90DE1B5B1CCE40B800850EA7 /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90DE1B571CCE40B800850EA7 /* Asset.cpp */; };
+		90DE1B5C1CCE40B800850EA7 /* Asset.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DE1B581CCE40B800850EA7 /* Asset.hpp */; };
+		90DE1B5D1CCE40B800850EA7 /* DB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90DE1B591CCE40B800850EA7 /* DB.cpp */; };
+		90DE1B5E1CCE40B800850EA7 /* DB.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DE1B5A1CCE40B800850EA7 /* DB.hpp */; };
+		90DE1B7E1CCF84E700850EA7 /* ETFFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90DE1B7C1CCF84E700850EA7 /* ETFFunctions.cpp */; };
+		90DE1B7F1CCF84E700850EA7 /* ETFFunctions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DE1B7D1CCF84E700850EA7 /* ETFFunctions.hpp */; };
+		90DE1B841CCF851C00850EA7 /* GEMFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90DE1B801CCF851C00850EA7 /* GEMFunctions.cpp */; };
+		90DE1B851CCF851C00850EA7 /* GEMFunctions.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DE1B811CCF851C00850EA7 /* GEMFunctions.hpp */; };
+		90DE1B861CCF851C00850EA7 /* GEMTrader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90DE1B821CCF851C00850EA7 /* GEMTrader.cpp */; };
+		90DE1B871CCF851C00850EA7 /* GEMTrader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90DE1B831CCF851C00850EA7 /* GEMTrader.hpp */; };
 		90EABE891CBAA0CF00F5316C /* DataEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABE7D1CBAA0CF00F5316C /* DataEntry.cpp */; };
 		90EABE8A1CBAA0CF00F5316C /* DataEntry.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABE7E1CBAA0CF00F5316C /* DataEntry.hpp */; };
 		90EABE8B1CBAA0CF00F5316C /* EquitySeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABE7F1CBAA0CF00F5316C /* EquitySeries.cpp */; };
@@ -44,10 +54,6 @@
 		90EABF041CC2818300F5316C /* Trader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF021CC2818300F5316C /* Trader.hpp */; };
 		90EABF071CC281CB00F5316C /* TA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF051CC281CB00F5316C /* TA.cpp */; };
 		90EABF081CC281CB00F5316C /* TA.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF061CC281CB00F5316C /* TA.hpp */; };
-		90EABF1E1CC2823600F5316C /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF181CC2823600F5316C /* Asset.cpp */; };
-		90EABF1F1CC2823600F5316C /* Asset.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF191CC2823600F5316C /* Asset.hpp */; };
-		90EABF201CC2823600F5316C /* DB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF1A1CC2823600F5316C /* DB.cpp */; };
-		90EABF211CC2823600F5316C /* DB.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF1B1CC2823600F5316C /* DB.hpp */; };
 		90EABF221CC2823600F5316C /* ETFTrader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EABF1C1CC2823600F5316C /* ETFTrader.cpp */; };
 		90EABF231CC2823600F5316C /* ETFTrader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 90EABF1D1CC2823600F5316C /* ETFTrader.hpp */; };
 		90FC3E271CB6781B00BCC3AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90FC3E261CB6781B00BCC3AD /* main.cpp */; };
@@ -81,6 +87,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 90DE1B411CCCF33300850EA7;
 			remoteInfo = allocation;
+		};
+		90DE1B721CCF842100850EA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90EABE6F1CBA9FD600F5316C;
+			remoteInfo = data;
+		};
+		90DE1B741CCF842100850EA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90EABEBD1CBE68A100F5316C;
+			remoteInfo = engine;
+		};
+		90DE1B761CCF842100850EA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90DC04BE1CC6509C00970BF1;
+			remoteInfo = balance;
+		};
+		90DE1B881CCF85A100850EA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90FC3E1B1CB6781B00BCC3AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90DE1B661CCF841300850EA7;
+			remoteInfo = gemalgo;
 		};
 		90EABE7B1CBAA06E00F5316C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -148,6 +182,17 @@
 		90DE1B4D1CCCF35700850EA7 /* BlackLitterman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlackLitterman.cpp; sourceTree = "<group>"; };
 		90DE1B4E1CCCF35700850EA7 /* BlackLitterman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BlackLitterman.hpp; sourceTree = "<group>"; };
 		90DE1B4F1CCCF35700850EA7 /* Inversion.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Inversion.hpp; sourceTree = "<group>"; };
+		90DE1B571CCE40B800850EA7 /* Asset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asset.cpp; sourceTree = "<group>"; };
+		90DE1B581CCE40B800850EA7 /* Asset.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Asset.hpp; sourceTree = "<group>"; };
+		90DE1B591CCE40B800850EA7 /* DB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DB.cpp; sourceTree = "<group>"; };
+		90DE1B5A1CCE40B800850EA7 /* DB.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DB.hpp; sourceTree = "<group>"; };
+		90DE1B671CCF841300850EA7 /* libgemalgo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libgemalgo.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		90DE1B7C1CCF84E700850EA7 /* ETFFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ETFFunctions.cpp; sourceTree = "<group>"; };
+		90DE1B7D1CCF84E700850EA7 /* ETFFunctions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ETFFunctions.hpp; sourceTree = "<group>"; };
+		90DE1B801CCF851C00850EA7 /* GEMFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GEMFunctions.cpp; sourceTree = "<group>"; };
+		90DE1B811CCF851C00850EA7 /* GEMFunctions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GEMFunctions.hpp; sourceTree = "<group>"; };
+		90DE1B821CCF851C00850EA7 /* GEMTrader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GEMTrader.cpp; sourceTree = "<group>"; };
+		90DE1B831CCF851C00850EA7 /* GEMTrader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GEMTrader.hpp; sourceTree = "<group>"; };
 		90EABE701CBA9FD600F5316C /* libdata.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libdata.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EABE7D1CBAA0CF00F5316C /* DataEntry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataEntry.cpp; sourceTree = "<group>"; };
 		90EABE7E1CBAA0CF00F5316C /* DataEntry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataEntry.hpp; sourceTree = "<group>"; };
@@ -181,10 +226,6 @@
 		90EABF051CC281CB00F5316C /* TA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TA.cpp; sourceTree = "<group>"; };
 		90EABF061CC281CB00F5316C /* TA.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TA.hpp; sourceTree = "<group>"; };
 		90EABF0D1CC2820200F5316C /* libetfalgo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libetfalgo.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		90EABF181CC2823600F5316C /* Asset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asset.cpp; sourceTree = "<group>"; };
-		90EABF191CC2823600F5316C /* Asset.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Asset.hpp; sourceTree = "<group>"; };
-		90EABF1A1CC2823600F5316C /* DB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DB.cpp; sourceTree = "<group>"; };
-		90EABF1B1CC2823600F5316C /* DB.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DB.hpp; sourceTree = "<group>"; };
 		90EABF1C1CC2823600F5316C /* ETFTrader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ETFTrader.cpp; sourceTree = "<group>"; };
 		90EABF1D1CC2823600F5316C /* ETFTrader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ETFTrader.hpp; sourceTree = "<group>"; };
 		90FC3E231CB6781B00BCC3AD /* cppbacktester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cppbacktester; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +241,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		90DE1B3F1CCCF33300850EA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90DE1B641CCF841300850EA7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -258,9 +306,24 @@
 			path = allocation;
 			sourceTree = "<group>";
 		};
+		90DE1B681CCF841300850EA7 /* gemalgo */ = {
+			isa = PBXGroup;
+			children = (
+				90DE1B801CCF851C00850EA7 /* GEMFunctions.cpp */,
+				90DE1B811CCF851C00850EA7 /* GEMFunctions.hpp */,
+				90DE1B821CCF851C00850EA7 /* GEMTrader.cpp */,
+				90DE1B831CCF851C00850EA7 /* GEMTrader.hpp */,
+			);
+			path = gemalgo;
+			sourceTree = "<group>";
+		};
 		90EABE711CBA9FD600F5316C /* data */ = {
 			isa = PBXGroup;
 			children = (
+				90DE1B571CCE40B800850EA7 /* Asset.cpp */,
+				90DE1B581CCE40B800850EA7 /* Asset.hpp */,
+				90DE1B591CCE40B800850EA7 /* DB.cpp */,
+				90DE1B5A1CCE40B800850EA7 /* DB.hpp */,
 				90EABE7D1CBAA0CF00F5316C /* DataEntry.cpp */,
 				90EABE7E1CBAA0CF00F5316C /* DataEntry.hpp */,
 				90EABE7F1CBAA0CF00F5316C /* EquitySeries.cpp */,
@@ -305,10 +368,8 @@
 		90EABF0E1CC2820200F5316C /* etfalgo */ = {
 			isa = PBXGroup;
 			children = (
-				90EABF181CC2823600F5316C /* Asset.cpp */,
-				90EABF191CC2823600F5316C /* Asset.hpp */,
-				90EABF1A1CC2823600F5316C /* DB.cpp */,
-				90EABF1B1CC2823600F5316C /* DB.hpp */,
+				90DE1B7C1CCF84E700850EA7 /* ETFFunctions.cpp */,
+				90DE1B7D1CCF84E700850EA7 /* ETFFunctions.hpp */,
 				90EABF1C1CC2823600F5316C /* ETFTrader.cpp */,
 				90EABF1D1CC2823600F5316C /* ETFTrader.hpp */,
 			);
@@ -319,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				90FC3E251CB6781B00BCC3AD /* cppbacktester */,
+				90DE1B681CCF841300850EA7 /* gemalgo */,
 				90EABF0E1CC2820200F5316C /* etfalgo */,
 				90EABE711CBA9FD600F5316C /* data */,
 				90EABEBF1CBE68A100F5316C /* engine */,
@@ -337,6 +399,7 @@
 				90EABF0D1CC2820200F5316C /* libetfalgo.a */,
 				90DC04BF1CC6509C00970BF1 /* libbalance.a */,
 				90DE1B421CCCF33300850EA7 /* liballocation.a */,
+				90DE1B671CCF841300850EA7 /* libgemalgo.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -370,6 +433,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		90DE1B651CCF841300850EA7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90DE1B871CCF851C00850EA7 /* GEMTrader.hpp in Headers */,
+				90DE1B851CCF851C00850EA7 /* GEMFunctions.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90EABE6E1CBA9FD600F5316C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -381,6 +453,8 @@
 				90EABE8A1CBAA0CF00F5316C /* DataEntry.hpp in Headers */,
 				90EABE941CBAA0CF00F5316C /* TreasurySeries.hpp in Headers */,
 				90EABE901CBAA0CF00F5316C /* PriceSeries.hpp in Headers */,
+				90DE1B5E1CCE40B800850EA7 /* DB.hpp in Headers */,
+				90DE1B5C1CCE40B800850EA7 /* Asset.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,8 +477,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90EABF211CC2823600F5316C /* DB.hpp in Headers */,
-				90EABF1F1CC2823600F5316C /* Asset.hpp in Headers */,
+				90DE1B7F1CCF84E700850EA7 /* ETFFunctions.hpp in Headers */,
 				90EABF231CC2823600F5316C /* ETFTrader.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +517,26 @@
 			name = allocation;
 			productName = allocation;
 			productReference = 90DE1B421CCCF33300850EA7 /* liballocation.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		90DE1B661CCF841300850EA7 /* gemalgo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90DE1B6F1CCF841300850EA7 /* Build configuration list for PBXNativeTarget "gemalgo" */;
+			buildPhases = (
+				90DE1B631CCF841300850EA7 /* Sources */,
+				90DE1B641CCF841300850EA7 /* Frameworks */,
+				90DE1B651CCF841300850EA7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90DE1B731CCF842100850EA7 /* PBXTargetDependency */,
+				90DE1B751CCF842100850EA7 /* PBXTargetDependency */,
+				90DE1B771CCF842100850EA7 /* PBXTargetDependency */,
+			);
+			name = gemalgo;
+			productName = gemalgo;
+			productReference = 90DE1B671CCF841300850EA7 /* libgemalgo.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		90EABE6F1CBA9FD600F5316C /* data */ = {
@@ -513,6 +606,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				90DE1B891CCF85A100850EA7 /* PBXTargetDependency */,
 				90DE1B561CCCF38B00850EA7 /* PBXTargetDependency */,
 				90DC04CD1CC6511300970BF1 /* PBXTargetDependency */,
 				90EABF251CC2824700F5316C /* PBXTargetDependency */,
@@ -537,6 +631,9 @@
 						CreatedOnToolsVersion = 7.3;
 					};
 					90DE1B411CCCF33300850EA7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					90DE1B661CCF841300850EA7 = {
 						CreatedOnToolsVersion = 7.3;
 					};
 					90EABE6F1CBA9FD600F5316C = {
@@ -571,6 +668,7 @@
 				90EABF0C1CC2820200F5316C /* etfalgo */,
 				90DC04BE1CC6509C00970BF1 /* balance */,
 				90DE1B411CCCF33300850EA7 /* allocation */,
+				90DE1B661CCF841300850EA7 /* gemalgo */,
 			);
 		};
 /* End PBXProject section */
@@ -593,12 +691,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		90DE1B631CCF841300850EA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90DE1B841CCF851C00850EA7 /* GEMFunctions.cpp in Sources */,
+				90DE1B861CCF851C00850EA7 /* GEMTrader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		90EABE6C1CBA9FD600F5316C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90DE1B5D1CCE40B800850EA7 /* DB.cpp in Sources */,
 				90EABE8D1CBAA0CF00F5316C /* FileDriver.cpp in Sources */,
 				90EABE891CBAA0CF00F5316C /* DataEntry.cpp in Sources */,
+				90DE1B5B1CCE40B800850EA7 /* Asset.cpp in Sources */,
 				90EABE911CBAA0CF00F5316C /* Series.cpp in Sources */,
 				90EABE931CBAA0CF00F5316C /* TreasurySeries.cpp in Sources */,
 				90EABE8F1CBAA0CF00F5316C /* PriceSeries.cpp in Sources */,
@@ -626,9 +735,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90EABF1E1CC2823600F5316C /* Asset.cpp in Sources */,
-				90EABF201CC2823600F5316C /* DB.cpp in Sources */,
 				90EABF221CC2823600F5316C /* ETFTrader.cpp in Sources */,
+				90DE1B7E1CCF84E700850EA7 /* ETFFunctions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +770,26 @@
 			isa = PBXTargetDependency;
 			target = 90DE1B411CCCF33300850EA7 /* allocation */;
 			targetProxy = 90DE1B551CCCF38B00850EA7 /* PBXContainerItemProxy */;
+		};
+		90DE1B731CCF842100850EA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90EABE6F1CBA9FD600F5316C /* data */;
+			targetProxy = 90DE1B721CCF842100850EA7 /* PBXContainerItemProxy */;
+		};
+		90DE1B751CCF842100850EA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90EABEBD1CBE68A100F5316C /* engine */;
+			targetProxy = 90DE1B741CCF842100850EA7 /* PBXContainerItemProxy */;
+		};
+		90DE1B771CCF842100850EA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90DC04BE1CC6509C00970BF1 /* balance */;
+			targetProxy = 90DE1B761CCF842100850EA7 /* PBXContainerItemProxy */;
+		};
+		90DE1B891CCF85A100850EA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90DE1B661CCF841300850EA7 /* gemalgo */;
+			targetProxy = 90DE1B881CCF85A100850EA7 /* PBXContainerItemProxy */;
 		};
 		90EABE7C1CBAA06E00F5316C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -742,6 +870,32 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				HEADER_SEARCH_PATHS = /usr/local/include/;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		90DE1B701CCF841300850EA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				OTHER_LDFLAGS = "-lboost_date_time";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		90DE1B711CCF841300850EA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
+				OTHER_LDFLAGS = "-lboost_date_time";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -917,6 +1071,7 @@
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				OTHER_LDFLAGS = (
 					"-lboost_date_time",
+					"-lgemalgo",
 					"-letfalgo",
 					"-ldata",
 					"-lengine",
@@ -942,6 +1097,7 @@
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				OTHER_LDFLAGS = (
 					"-lboost_date_time",
+					"-lgemalgo",
 					"-letfalgo",
 					"-ldata",
 					"-lengine",
@@ -972,6 +1128,15 @@
 			buildConfigurations = (
 				90DE1B4B1CCCF33300850EA7 /* Debug */,
 				90DE1B4C1CCCF33300850EA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90DE1B6F1CCF841300850EA7 /* Build configuration list for PBXNativeTarget "gemalgo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90DE1B701CCF841300850EA7 /* Debug */,
+				90DE1B711CCF841300850EA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

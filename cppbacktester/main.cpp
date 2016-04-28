@@ -25,6 +25,7 @@
 #include "ETFTrader.hpp"
 #include "BalanceSet.hpp"
 #include "BlackLitterman.hpp"
+#include "GEMTrader.hpp"
 
 using namespace boost::gregorian;
 using namespace std;
@@ -44,54 +45,117 @@ void etftrader_run();
 void balance();
 void action();
 void blacklitterman();
-
+void etftrader_temp_final();
+void gemtrader_test();
 //#define PRINT 1
 
 int main() {
     
+    gemtrader_test();
+    
+//    daily();
+//    weekly();
+//    monthly();
+//    database();
+//    database_offset();
+//    execution();
+//    executionset();
+//    position();
+//    positionset();
+//    etftrader();
+//    etftrader_offset();
+//    etftrader_run();
+//    blacklitterman();
+//    etftrader_temp_final();
+    
+    return 0;
+    
+}
+
+
+void gemtrader_test() {
+    FileDriver fd;
+    
+    date load_begin(from_simple_string(string("1972-12-31")));
+    date load_end(from_simple_string(string("2015-12-31")));
+    
+    const string filepath("/Users/jeongwon/Documents/GitHub/cppbacktester/db/GEM/");
+    const string benchpath("/Users/jeongwon/Documents/GitHub/cppbacktester/db/Benchmark/");
+    
+    const string acwi_symbol("ACWIexUS");
+    const string acwi_price(filepath+"ACWIexUS_daily.csv");
+    const string acwi_action(filepath+"ACWIexUS_actions.csv");
+    
+    const string sp500_symbol("SP500TR");
+    const string sp500_price(filepath+"SP500TR_daily.csv");
+    const string sp500_action(filepath+"SP500TR_actions.csv");
+    
+    const string bond_symbol("USBond");
+    const string bond_price(filepath+"USBond_daily.csv");
+    const string bond_action(filepath+"USBond_actions.csv");
+    
+    const string treas_symbol("TREASURY");
+    const string treas_file(benchpath+"treasury_benchmark.csv");
+    TreasurySeries ts("1YR", fd, treas_file, load_begin, load_end);
+    
+    // load function advances the data to EOM
+    DB::instance().load(acwi_symbol, acwi_price, acwi_action, fd, load_begin, load_end);
+    DB::instance().load(sp500_symbol, sp500_price, sp500_action, fd, load_begin, load_end);
+    DB::instance().load(bond_symbol, bond_price, bond_action, fd, load_begin, load_end);
+    
+    GEMTrader one(100000, ts);
+    one.run();  // this function advances the data*/
+    
+#ifdef PRINT
+    BalanceSet::instance().print();
+#endif
+    BalanceSet::instance().export_to_csv("GEM");
+}
+
+void etftrader_temp_final(){
     FileDriver fd;
     
     date load_begin(from_simple_string(string("1999-12-20")));
     date load_end(from_simple_string(string("2014-4-20")));
     
-    const string etfpath("/Users/jeongwon/Documents/GitHub/cppbacktester/db/SPDR_ETF/");
+    const string filepath("/Users/jeongwon/Documents/GitHub/cppbacktester/db/SPDR_ETF/");
     const string benchpath("/Users/jeongwon/Documents/GitHub/cppbacktester/db/Benchmark/");
     
     const string xlu_symbol("XLU");
-    const string xlu_price(etfpath+"XLU.csv");
-    const string xlu_action(etfpath+"XLU_actions.csv");
+    const string xlu_price(filepath+"XLU.csv");
+    const string xlu_action(filepath+"XLU_actions.csv");
     
     const string xlb_symbol("XLB");
-    const string xlb_price(etfpath+"XLB.csv");
-    const string xlb_action(etfpath+"XLB_actions.csv");
-
+    const string xlb_price(filepath+"XLB.csv");
+    const string xlb_action(filepath+"XLB_actions.csv");
+    
     const string xli_symbol("XLI");
-    const string xli_price(etfpath+"XLI.csv");
-    const string xli_action(etfpath+"XLI_actions.csv");
-
+    const string xli_price(filepath+"XLI.csv");
+    const string xli_action(filepath+"XLI_actions.csv");
+    
     const string xle_symbol("XLE");
-    const string xle_price(etfpath+"XLE.csv");
-    const string xle_action(etfpath+"XLE_actions.csv");
-
+    const string xle_price(filepath+"XLE.csv");
+    const string xle_action(filepath+"XLE_actions.csv");
+    
     const string xly_symbol("XLY");
-    const string xly_price(etfpath+"XLY.csv");
-    const string xly_action(etfpath+"XLY_actions.csv");
-
+    const string xly_price(filepath+"XLY.csv");
+    const string xly_action(filepath+"XLY_actions.csv");
+    
     const string xlp_symbol("XLP");
-    const string xlp_price(etfpath+"XLP.csv");
-    const string xlp_action(etfpath+"XLP_actions.csv");
-
+    const string xlp_price(filepath+"XLP.csv");
+    const string xlp_action(filepath+"XLP_actions.csv");
+    
     const string xlv_symbol("XLV");
-    const string xlv_price(etfpath+"XLV.csv");
-    const string xlv_action(etfpath+"XLV_actions.csv");
+    const string xlv_price(filepath+"XLV.csv");
+    const string xlv_action(filepath+"XLV_actions.csv");
     
     const string xlk_symbol("XLK");
-    const string xlk_price(etfpath+"XLK.csv");
-    const string xlk_action(etfpath+"XLK_actions.csv");
-
+    const string xlk_price(filepath+"XLK.csv");
+    const string xlk_action(filepath+"XLK_actions.csv");
+    
     const string xlf_symbol("XLF");
-    const string xlf_price(etfpath+"XLF.csv");
-    const string xlf_action(etfpath+"XLF_actions.csv");
+    const string xlf_price(filepath+"XLF.csv");
+    const string xlf_action(filepath+"XLF_actions.csv");
     
     const string treas_symbol("TREASURY");
     const string treas_file(benchpath+"treasury_benchmark.csv");
@@ -110,28 +174,11 @@ int main() {
     
     ETFTrader one(100000, ts);
     one.run();  // this function advances the data*/
-
+    
 #ifdef PRINT
     BalanceSet::instance().print();
 #endif
-    BalanceSet::instance().export_to_csv();
-    
-//    daily();
-//    weekly();
-//    monthly();
-//    database();
-//    database_offset();
-//    execution();
-//    executionset();
-//    position();
-//    positionset();
-//    etftrader();
-//    etftrader_offset();
-//    etftrader_run();
-//    blacklitterman();
-    
-    return 0;
-    
+    BalanceSet::instance().export_to_csv("ETF");
 }
 
 
@@ -219,7 +266,7 @@ void action() {
     one.run();  // this function advances the data*/
     
     BalanceSet::instance().print();
-    BalanceSet::instance().export_to_csv();
+    BalanceSet::instance().export_to_csv("ETF");
 }
 
 void balance() {
@@ -254,7 +301,7 @@ void balance() {
     BalanceSet::instance().update_capital(share_book, 10, tmr);
     
     BalanceSet::instance().print();
-    BalanceSet::instance().export_to_csv();
+    BalanceSet::instance().export_to_csv("ETF");
 }
 
 void etftrader_run() {

@@ -922,15 +922,21 @@ dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/LongPosition.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ShortPosition.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/PositionSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/DB.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DataEntry.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/Asset.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/TreasurySeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/Series.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/FileDriver.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DataEntry.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFFunctions.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DB.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/Asset.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/ActionSeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/TA.hpp \
+  /usr/local/include/ta-lib/ta_libc.h \
+  /usr/local/include/ta-lib/ta_common.h \
+  /usr/local/include/ta-lib/ta_defs.h \
+  /usr/local/include/ta-lib/ta_func.h \
+  /usr/local/include/ta-lib/ta_abstract.h \
   /Users/jeongwon/Documents/GitHub/cppbacktester/allocation/BlackLitterman.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/allocation/Inversion.hpp \
   /usr/local/include/boost/numeric/ublas/matrix.hpp \
@@ -1037,10 +1043,5 @@ dependencies: \
   /usr/local/include/boost/numeric/ublas/triangular.hpp \
   /usr/local/include/boost/numeric/ublas/io.hpp \
   /usr/local/include/gsl/gsl_cdf.h \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/TreasurySeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/TA.hpp \
-  /usr/local/include/ta-lib/ta_libc.h \
-  /usr/local/include/ta-lib/ta_common.h \
-  /usr/local/include/ta-lib/ta_defs.h \
-  /usr/local/include/ta-lib/ta_func.h \
-  /usr/local/include/ta-lib/ta_abstract.h
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp

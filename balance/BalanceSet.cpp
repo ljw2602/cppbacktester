@@ -120,7 +120,7 @@ void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
             double price = DB::instance().get(*it).daily().find(today)->second->close();
             assert(DB::instance().get(*it).daily().find(today)->first == today);
             
-            BalancePtr pBalance( new Balance(*it, today, eod_shares * price) );
+            BalancePtr pBalance( new Balance(*it, today, eod_shares * price, eod_shares) );
             insert(pBalance);
             total += eod_shares * price;
         } else {
@@ -141,7 +141,7 @@ void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
     insert(pTOTAL);
     
     if (cash < 0) {
-        export_to_csv();
+        export_to_csv("DEBUG");
         throw BalanceException("Cash goes below zero; trading suspended");
     }
 }
@@ -187,14 +187,14 @@ std::vector<double> BalanceSet::monthly_ret(const std::set<boost::gregorian::dat
 }
 */
 
-void BalanceSet::export_to_csv(void) const {
+void BalanceSet::export_to_csv(const std::string& tag) const {
     std::ofstream myfile;
-    myfile.open ("Balance.csv");
+    myfile.open (tag+"Balance.csv");
     
     // Header
     myfile << "Date";
     for (int i = 0; i < names.size(); i++) {
-        myfile << "," << names[i];
+        myfile << "," << names[i] << "," << names[i] << " #";
     }
     myfile << "," << CASH << "," << TOTAL << "\n";
     
@@ -206,20 +206,23 @@ void BalanceSet::export_to_csv(void) const {
     while (it_date != it_end) {
         date = (*it_date)->dt();
         date_pair its = by_date::equal_range(date);
-        std::map<std::string, double> temp;
+
+        std::map<std::string, std::pair<double, int> > temp;  // name, balance, shares
         for (by_date::const_iterator it = its.first; it != its.second; it++) {
-            temp.insert( std::pair<std::string, double>((*it)->name(), (*it)->balance()) );
+            temp.insert( std::pair<std::string, std::pair<double, int> >((*it)->name(), std::pair<double, int>((*it)->balance(), (*it)->shares()) ));
         }
         
         myfile << date << ",";
         for (int i = 0; i < names.size(); i++) {
-            myfile << temp.at(names[i]) << ",";
+            myfile << temp.at(names[i]).first << "," << temp.at(names[i]).second << ",";
         }
-        myfile << temp.at(CASH) << "," << temp.at(TOTAL) << "\n";
+        myfile << temp.at(CASH).first << "," << temp.at(TOTAL).first << "\n";
         
         it_date = its.second;
     }
     
     myfile.close();
+    std::cout << tag+"Balance.csv is saved" << std::endl;
+    
     return;
 }

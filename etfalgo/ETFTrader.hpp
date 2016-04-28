@@ -10,10 +10,8 @@
 #define ETFTrader_hpp
 
 #include "Trader.hpp"
-#include "DB.hpp"
-#include "BalanceSet.hpp"
-#include "BlackLitterman.hpp"
 #include "TreasurySeries.hpp"
+#include "ETFFunctions.hpp"
 
 
 class ETFTrader: public Trader
@@ -32,6 +30,8 @@ private:
     double daily_execution(std::map<std::string, int>& share_book,
                            std::map<std::string, int>& order_book,
                            const boost::gregorian::date& today);
+    
+    void date_check(const boost::gregorian::date& today);
     
 };
 
