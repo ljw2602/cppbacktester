@@ -63,6 +63,8 @@ private:
     
     std::map<std::string, int> monthly_allocation(const std::map<double, std::string, std::greater<double> >& est, double minimum, const boost::gregorian::date& today);
 
+    double get_rf(const boost::gregorian::date& today);
+
     void daily_settlement(std::map<std::string, int>& share_book,
                           const double netcash,
                           const boost::gregorian::date& today);

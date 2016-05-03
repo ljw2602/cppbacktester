@@ -224,6 +224,29 @@ std::map<double, std::string, std::greater<double> > ETFTrader::monthly_estimati
 }
 
 
+double ETFTrader::get_rf(const boost::gregorian::date& today)
+{
+    boost::gregorian::date rf_day = today;
+    bool rolled = false;
+    double minimum = 0.0;
+    
+    while (rf->find(rf_day) == rf->end()){
+        rf_day -= boost::gregorian::days(1);
+        rolled = true;
+    }
+    minimum = rf->find(rf_day)->second->ret();
+    
+#ifdef PRINT
+    std::cout << "Rf\t" << minimum << std::endl;
+    if (rf_day < today) {
+        std::cout << "Rf of " << rf_day << " is used instead of the one of " << today << std::endl;
+    }
+#endif
+    
+    return minimum;
+}
+
+
 std::map<std::string, int> ETFTrader::monthly_allocation(const std::map<double, std::string, std::greater<double> >& est, double minimum, const boost::gregorian::date& today)
 {
     // Allocate asset weight, based on the estimation()
@@ -274,13 +297,13 @@ std::map<std::string, int> ETFTrader::monthly_allocation(const std::map<double, 
         target.insert( std::pair<std::string, int>(names[i], 0) );
     }
     
-    if (it1->first < minimum) {
+    /*if (it1->first < minimum) {
         // If highest return is negative, close all positions
 #ifdef PRINT
         std::cout << it1->first << " (highest ETF ret) < " << minimum << " (treasury ret): close all positions on " << today << std::endl;
 #endif
         return target;
-    }
+    }*/
     
     const std::string first = it1->second; it1++;
     const std::string second = it1->second;
@@ -387,7 +410,7 @@ void ETFTrader::run() throw(TraderException)
                 std::map<double, std::string, std::greater<double> > est = monthly_estimation(today, adv_yr, adv_mo);
                 
                 // Based on the estimation, determine the target shares
-                double minimum = rf->find(today)->second->ret();  // treasury yield is threshold of investment
+                double minimum = get_rf(today);
                 order_book = monthly_allocation(est, minimum, today);
                 
                 // Advance monthly pointers

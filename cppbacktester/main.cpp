@@ -54,6 +54,7 @@ void gemtrader_test();
 int main() {
     
 //    gemtrader_test();
+    etftrader_temp_final();
     
 //    daily();
 //    weekly();
@@ -68,7 +69,6 @@ int main() {
 //    etftrader_offset();
 //    etftrader_run();
 //    blacklitterman();
-    etftrader_temp_final();
     
     return 0;
     
@@ -119,7 +119,7 @@ void etftrader_temp_final(){
     FileDriver fd;
     
     date load_begin(from_simple_string(string("1999-12-20")));
-    date load_end(from_simple_string(string("2014-4-20")));
+    date load_end(from_simple_string(string("2016-4-20")));
     
     const string filepath("/Users/jeongwon/Documents/GitHub/cppbacktester/db/SPDR_ETF/");
     const string benchpath("/Users/jeongwon/Documents/GitHub/cppbacktester/db/Benchmark/");
@@ -178,7 +178,7 @@ void etftrader_temp_final(){
     DB::instance().load(xlv_symbol, xlv_price, xlv_action, fd, load_begin, load_end);
     DB::instance().load(xlk_symbol, xlk_price, xlk_action, fd, load_begin, load_end);
     DB::instance().load(xlf_symbol, xlf_price, xlf_action, fd, load_begin, load_end);
-    //DB::instance().load(bond_symbol, bond_price, bond_action, fd, load_begin, load_end);
+//    DB::instance().load(bond_symbol, bond_price, bond_action, fd, load_begin, load_end);
     
     ETFTrader one(100000, ts);
     one.set_bond(bond_symbol);
