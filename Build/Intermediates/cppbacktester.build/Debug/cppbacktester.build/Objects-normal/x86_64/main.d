@@ -756,16 +756,9 @@ dependencies: \
   /usr/local/include/boost/token_iterator.hpp \
   /usr/local/include/boost/iterator/minimum_category.hpp \
   /usr/local/include/boost/token_functions.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/FileDriver.hpp \
-  data/DataEntry.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/Series.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/EquitySeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/TreasurySeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DB.hpp \
-  data/Asset.hpp data/ActionSeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Execution.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ExecutionSet.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFTrader.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp \
+  engine/Position.hpp engine/ExecutionSet.hpp engine/Execution.hpp \
   /usr/local/include/boost/multi_index_container.hpp \
   /usr/local/include/boost/detail/allocator_utilities.hpp \
   /usr/local/include/boost/detail/no_exceptions_support.hpp \
@@ -924,13 +917,12 @@ dependencies: \
   /usr/local/include/boost/bind/bind_mf2_cc.hpp \
   /usr/local/include/boost/bind/placeholders.hpp \
   /usr/local/include/boost/multi_index/detail/duplicates_iterator.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/LongPosition.hpp \
-  engine/Position.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ShortPosition.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/PositionSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFTrader.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp \
-  etfalgo/ETFFunctions.hpp \
+  engine/LongPosition.hpp engine/ShortPosition.hpp \
+  engine/PositionSet.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/TreasurySeries.hpp \
+  data/Series.hpp data/FileDriver.hpp data/DataEntry.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DB.hpp \
+  data/Asset.hpp data/PriceSeries.hpp data/ActionSeries.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/TA.hpp \
   /usr/local/include/ta-lib/ta_libc.h \
   /usr/local/include/ta-lib/ta_common.h \
@@ -1045,5 +1037,4 @@ dependencies: \
   /usr/local/include/gsl/gsl_cdf.h \
   /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/gemalgo/GEMTrader.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/gemalgo/GEMFunctions.hpp
+  /Users/jeongwon/Documents/GitHub/cppbacktester/gemalgo/GEMTrader.hpp

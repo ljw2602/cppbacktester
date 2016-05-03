@@ -142,6 +142,14 @@ void BalanceSet::update_capital(const std::map<std::string, int>& share_book,
     
     if (cash < 0) {
         export_to_csv("DEBUG");
+        std::cout << today << " balance check" << std::endl;
+        for (std::vector<std::string>::const_iterator it = names.begin(); it != names.end(); it++) {
+            if ( share_book.find(*it) != share_book.end() ) {
+                int eod_shares = share_book.at(*it);
+                double price = DB::instance().get(*it).daily().find(today)->second->close();
+                std::cout << "Attempted to buy " << eod_shares << " shares at $" << price << std::endl;
+            }
+        }
         throw BalanceException("Cash goes below zero; trading suspended");
     }
 }

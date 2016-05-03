@@ -1,10 +1,6 @@
 dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/gemalgo/GEMTrader.cpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/gemalgo/GEMTrader.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Position.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ExecutionSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Execution.hpp \
   /usr/local/include/boost/date_time/gregorian/gregorian.hpp \
   /usr/local/include/boost/date_time/compiler_config.hpp \
   /usr/local/include/boost/config.hpp \
@@ -761,6 +757,20 @@ dependencies: \
   /usr/local/include/boost/token_iterator.hpp \
   /usr/local/include/boost/iterator/minimum_category.hpp \
   /usr/local/include/boost/token_functions.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DB.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DataEntry.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/Asset.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/Series.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/FileDriver.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/ActionSeries.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/TA.hpp \
+  /usr/local/include/ta-lib/ta_libc.h \
+  /usr/local/include/ta-lib/ta_common.h \
+  /usr/local/include/ta-lib/ta_defs.h \
+  /usr/local/include/ta-lib/ta_func.h \
+  /usr/local/include/ta-lib/ta_abstract.h \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
   /usr/local/include/boost/multi_index_container.hpp \
   /usr/local/include/boost/detail/allocator_utilities.hpp \
   /usr/local/include/boost/detail/no_exceptions_support.hpp \
@@ -886,7 +896,6 @@ dependencies: \
   /usr/local/include/boost/serialization/collection_size_type.hpp \
   /usr/local/include/boost/serialization/split_free.hpp \
   /usr/local/include/boost/serialization/is_bitwise_serializable.hpp \
-  /usr/local/include/boost/multi_index/mem_fun.hpp \
   /usr/local/include/boost/multi_index/ordered_index.hpp \
   /usr/local/include/boost/multi_index/detail/ord_index_impl.hpp \
   /usr/local/include/boost/call_traits.hpp \
@@ -919,129 +928,13 @@ dependencies: \
   /usr/local/include/boost/bind/bind_mf2_cc.hpp \
   /usr/local/include/boost/bind/placeholders.hpp \
   /usr/local/include/boost/multi_index/detail/duplicates_iterator.hpp \
+  /usr/local/include/boost/multi_index/mem_fun.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Position.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ExecutionSet.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Execution.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/LongPosition.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ShortPosition.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/engine/PositionSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/TreasurySeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/Series.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/FileDriver.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DataEntry.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/gemalgo/GEMFunctions.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/DB.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/Asset.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/data/ActionSeries.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/TA.hpp \
-  /usr/local/include/ta-lib/ta_libc.h \
-  /usr/local/include/ta-lib/ta_common.h \
-  /usr/local/include/ta-lib/ta_defs.h \
-  /usr/local/include/ta-lib/ta_func.h \
-  /usr/local/include/ta-lib/ta_abstract.h \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/allocation/BlackLitterman.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/allocation/Inversion.hpp \
-  /usr/local/include/boost/numeric/ublas/matrix.hpp \
-  /usr/local/include/boost/numeric/ublas/vector.hpp \
-  /usr/local/include/boost/numeric/ublas/storage.hpp \
-  /usr/local/include/boost/serialization/array.hpp \
-  /usr/local/include/boost/numeric/ublas/exception.hpp \
-  /usr/local/include/boost/numeric/ublas/detail/config.hpp \
-  /usr/local/include/boost/numeric/ublas/fwd.hpp \
-  /usr/local/include/boost/numeric/ublas/detail/definitions.hpp \
-  /usr/local/include/boost/numeric/ublas/traits.hpp \
-  /usr/local/include/boost/numeric/ublas/detail/iterator.hpp \
-  /usr/local/include/boost/numeric/ublas/detail/returntype_deduction.hpp \
-  /usr/local/include/boost/type_traits.hpp \
-  /usr/local/include/boost/type_traits/common_type.hpp \
-  /usr/local/include/boost/type_traits/decay.hpp \
-  /usr/local/include/boost/type_traits/remove_bounds.hpp \
-  /usr/local/include/boost/type_traits/remove_extent.hpp \
-  /usr/local/include/boost/type_traits/detail/mp_defer.hpp \
-  /usr/local/include/boost/type_traits/copy_cv.hpp \
-  /usr/local/include/boost/type_traits/extent.hpp \
-  /usr/local/include/boost/type_traits/floating_point_promotion.hpp \
-  /usr/local/include/boost/type_traits/has_bit_and.hpp \
-  /usr/local/include/boost/type_traits/has_bit_and_assign.hpp \
-  /usr/local/include/boost/type_traits/has_bit_or.hpp \
-  /usr/local/include/boost/type_traits/has_bit_or_assign.hpp \
-  /usr/local/include/boost/type_traits/has_bit_xor.hpp \
-  /usr/local/include/boost/type_traits/has_bit_xor_assign.hpp \
-  /usr/local/include/boost/type_traits/has_complement.hpp \
-  /usr/local/include/boost/type_traits/detail/has_prefix_operator.hpp \
-  /usr/local/include/boost/type_traits/has_dereference.hpp \
-  /usr/local/include/boost/type_traits/has_divides.hpp \
-  /usr/local/include/boost/type_traits/has_divides_assign.hpp \
-  /usr/local/include/boost/type_traits/has_equal_to.hpp \
-  /usr/local/include/boost/type_traits/has_greater.hpp \
-  /usr/local/include/boost/type_traits/has_greater_equal.hpp \
-  /usr/local/include/boost/type_traits/has_left_shift_assign.hpp \
-  /usr/local/include/boost/type_traits/has_less.hpp \
-  /usr/local/include/boost/type_traits/has_less_equal.hpp \
-  /usr/local/include/boost/type_traits/has_logical_and.hpp \
-  /usr/local/include/boost/type_traits/has_logical_not.hpp \
-  /usr/local/include/boost/type_traits/has_logical_or.hpp \
-  /usr/local/include/boost/type_traits/has_modulus.hpp \
-  /usr/local/include/boost/type_traits/has_modulus_assign.hpp \
-  /usr/local/include/boost/type_traits/has_multiplies.hpp \
-  /usr/local/include/boost/type_traits/has_multiplies_assign.hpp \
-  /usr/local/include/boost/type_traits/has_negate.hpp \
-  /usr/local/include/boost/type_traits/has_new_operator.hpp \
-  /usr/local/include/boost/type_traits/has_not_equal_to.hpp \
-  /usr/local/include/boost/type_traits/has_nothrow_assign.hpp \
-  /usr/local/include/boost/type_traits/is_assignable.hpp \
-  /usr/local/include/boost/type_traits/has_nothrow_constructor.hpp \
-  /usr/local/include/boost/type_traits/is_default_constructible.hpp \
-  /usr/local/include/boost/type_traits/has_nothrow_copy.hpp \
-  /usr/local/include/boost/type_traits/is_copy_constructible.hpp \
-  /usr/local/include/boost/type_traits/is_constructible.hpp \
-  /usr/local/include/boost/type_traits/is_destructible.hpp \
-  /usr/local/include/boost/type_traits/has_nothrow_destructor.hpp \
-  /usr/local/include/boost/type_traits/has_trivial_destructor.hpp \
-  /usr/local/include/boost/type_traits/has_post_decrement.hpp \
-  /usr/local/include/boost/type_traits/detail/has_postfix_operator.hpp \
-  /usr/local/include/boost/type_traits/has_post_increment.hpp \
-  /usr/local/include/boost/type_traits/has_pre_decrement.hpp \
-  /usr/local/include/boost/type_traits/has_pre_increment.hpp \
-  /usr/local/include/boost/type_traits/has_right_shift_assign.hpp \
-  /usr/local/include/boost/type_traits/has_trivial_assign.hpp \
-  /usr/local/include/boost/type_traits/has_trivial_constructor.hpp \
-  /usr/local/include/boost/type_traits/has_trivial_copy.hpp \
-  /usr/local/include/boost/type_traits/has_trivial_move_assign.hpp \
-  /usr/local/include/boost/type_traits/has_trivial_move_constructor.hpp \
-  /usr/local/include/boost/type_traits/has_unary_minus.hpp \
-  /usr/local/include/boost/type_traits/has_unary_plus.hpp \
-  /usr/local/include/boost/type_traits/has_virtual_destructor.hpp \
-  /usr/local/include/boost/type_traits/is_complex.hpp \
-  /usr/local/include/boost/type_traits/is_compound.hpp \
-  /usr/local/include/boost/type_traits/is_copy_assignable.hpp \
-  /usr/local/include/boost/type_traits/is_empty.hpp \
-  /usr/local/include/boost/type_traits/is_member_object_pointer.hpp \
-  /usr/local/include/boost/type_traits/is_nothrow_move_assignable.hpp \
-  /usr/local/include/boost/type_traits/is_nothrow_move_constructible.hpp \
-  /usr/local/include/boost/type_traits/is_object.hpp \
-  /usr/local/include/boost/type_traits/is_stateless.hpp \
-  /usr/local/include/boost/type_traits/is_union.hpp \
-  /usr/local/include/boost/type_traits/is_virtual_base_of.hpp \
-  /usr/local/include/boost/type_traits/rank.hpp \
-  /usr/local/include/boost/type_traits/remove_all_extents.hpp \
-  /usr/local/include/boost/type_traits/type_identity.hpp \
-  /usr/local/include/boost/type_traits/promote.hpp \
-  /usr/local/include/boost/typeof/typeof.hpp \
-  /usr/local/include/boost/typeof/message.hpp \
-  /usr/local/include/boost/typeof/native.hpp \
-  /usr/local/include/boost/numeric/ublas/vector_expression.hpp \
-  /usr/local/include/boost/numeric/ublas/expression_types.hpp \
-  /usr/local/include/boost/numeric/ublas/functional.hpp \
-  /usr/local/include/boost/core/ignore_unused.hpp \
-  /usr/local/include/boost/numeric/ublas/detail/vector_assign.hpp \
-  /usr/local/include/boost/numeric/ublas/matrix_expression.hpp \
-  /usr/local/include/boost/numeric/ublas/detail/matrix_assign.hpp \
-  /usr/local/include/boost/numeric/ublas/lu.hpp \
-  /usr/local/include/boost/numeric/ublas/operation.hpp \
-  /usr/local/include/boost/numeric/ublas/matrix_proxy.hpp \
-  /usr/local/include/boost/numeric/ublas/detail/temporary.hpp \
-  /usr/local/include/boost/numeric/ublas/vector_proxy.hpp \
-  /usr/local/include/boost/numeric/ublas/triangular.hpp \
-  /usr/local/include/boost/numeric/ublas/io.hpp \
-  /usr/local/include/gsl/gsl_cdf.h \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/BalanceSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/balance/Balance.hpp
+  /Users/jeongwon/Documents/GitHub/cppbacktester/data/TreasurySeries.hpp

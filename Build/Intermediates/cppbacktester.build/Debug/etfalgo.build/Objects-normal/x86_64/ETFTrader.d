@@ -1,10 +1,6 @@
 dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFTrader.cpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFTrader.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Position.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ExecutionSet.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Execution.hpp \
   /usr/local/include/boost/date_time/gregorian/gregorian.hpp \
   /usr/local/include/boost/date_time/compiler_config.hpp \
   /usr/local/include/boost/config.hpp \
@@ -761,6 +757,10 @@ dependencies: \
   /usr/local/include/boost/token_iterator.hpp \
   /usr/local/include/boost/iterator/minimum_category.hpp \
   /usr/local/include/boost/token_functions.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Trader.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Position.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/ExecutionSet.hpp \
+  /Users/jeongwon/Documents/GitHub/cppbacktester/engine/Execution.hpp \
   /usr/local/include/boost/multi_index_container.hpp \
   /usr/local/include/boost/detail/allocator_utilities.hpp \
   /usr/local/include/boost/detail/no_exceptions_support.hpp \
@@ -926,7 +926,6 @@ dependencies: \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/Series.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/FileDriver.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/DataEntry.hpp \
-  /Users/jeongwon/Documents/GitHub/cppbacktester/etfalgo/ETFFunctions.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/DB.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/Asset.hpp \
   /Users/jeongwon/Documents/GitHub/cppbacktester/data/PriceSeries.hpp \

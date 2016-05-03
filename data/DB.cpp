@@ -45,6 +45,7 @@ const Asset& DB::get(const std::string& symbol) const
     
     DBmap::const_iterator it;
     if ( (it = _db.find(symbol)) == _db.end() ) {
+        std::cout << symbol << std::endl;
         throw DBException("Unknown symbol name");
     }
     return *(it->second);
